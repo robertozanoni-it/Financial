@@ -24,6 +24,7 @@
     --sidebar-w: 220px;
     --sidebar-r: 260px;
     --zoom: 1;
+    --base-fs: 17px;
   }
   .theme-light {
     --bg: #f5f5f5; --bg2: #ffffff; --bg3: #ebebeb; --bg4: #e0e0e0;
@@ -32,7 +33,7 @@
     --danger: #d32f2f; --success: #388e3c;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-size: calc(16px * var(--zoom)); }
+  html { font-size: calc(var(--base-fs) * var(--zoom)); }
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--bg);
@@ -72,10 +73,59 @@
   .nav-item .icon { font-size: 1rem; width: 20px; text-align: center; }
   .nav-item .badge { margin-left: auto; background: var(--accent); color: #000; font-size: 0.6rem; font-weight: 700; padding: 1px 5px; border-radius: 10px; }
   .sidebar-bottom { margin-top: auto; padding: 12px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
-  .zoom-ctrl { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--text2); }
-  .zoom-ctrl button { background: var(--bg3); border: 1px solid var(--border); color: var(--text); width: 24px; height: 24px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
-  .zoom-ctrl button:hover { background: var(--bg4); }
-  #zoom-val { min-width: 30px; text-align: center; font-family: 'Space Mono', monospace; font-size: 0.7rem; }
+  .zoom-ctrl {
+    display: flex; flex-direction: column; gap: 6px;
+    padding: 10px; background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 9px;
+  }
+  .zoom-ctrl-top {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .zoom-ctrl-label {
+    font-size: 0.7rem; color: var(--text2); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  #zoom-val {
+    font-family: 'Space Mono', monospace; font-size: 0.75rem;
+    color: var(--accent); font-weight: 700; background: var(--bg4);
+    padding: 2px 7px; border-radius: 5px; border: 1px solid var(--border);
+  }
+  .zoom-slider-row {
+    display: flex; align-items: center; gap: 7px;
+  }
+  .zoom-btn {
+    background: var(--bg4); border: 1px solid var(--border); color: var(--text);
+    width: 26px; height: 26px; border-radius: 6px; cursor: pointer;
+    font-size: 1rem; font-weight: 700; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; transition: all 0.15s; line-height: 1;
+  }
+  .zoom-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+  .zoom-btn:active { transform: scale(0.92); }
+  #zoom-slider {
+    flex: 1; -webkit-appearance: none; appearance: none;
+    height: 4px; border-radius: 3px; cursor: pointer; outline: none;
+    background: linear-gradient(to right, var(--accent) 0%, var(--accent) 50%, var(--bg4) 50%, var(--bg4) 100%);
+  }
+  #zoom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--accent); cursor: pointer;
+    border: 2px solid var(--bg2); box-shadow: 0 0 0 2px var(--accent);
+    transition: transform 0.15s;
+  }
+  #zoom-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+  #zoom-slider::-moz-range-thumb {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--accent); cursor: pointer;
+    border: 2px solid var(--bg2);
+  }
+  .zoom-reset {
+    background: none; border: none; color: var(--text3); font-size: 0.65rem;
+    cursor: pointer; text-align: center; padding: 0; text-decoration: underline;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .zoom-reset:hover { color: var(--accent); }
   .theme-toggle { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--text2); cursor: pointer; padding: 6px 8px; border-radius: 6px; background: var(--bg3); border: 1px solid var(--border); user-select: none; }
   .theme-toggle:hover { background: var(--bg4); }
   .currency-select { background: var(--bg3); border: 1px solid var(--border); color: var(--text); padding: 5px 8px; border-radius: 6px; font-size: 0.78rem; cursor: pointer; width: 100%; font-family: 'DM Sans', sans-serif; }
@@ -339,10 +389,16 @@
   </div>
   <div class="sidebar-bottom">
     <div class="zoom-ctrl">
-      <span>🔤</span>
-      <button id="zoom-out">−</button>
-      <span id="zoom-val">100%</span>
-      <button id="zoom-in">+</button>
+      <div class="zoom-ctrl-top">
+        <span class="zoom-ctrl-label">🔤 Dimensione testo</span>
+        <span id="zoom-val">130%</span>
+      </div>
+      <div class="zoom-slider-row">
+        <button class="zoom-btn" id="zoom-out">−</button>
+        <input type="range" id="zoom-slider" min="70" max="180" step="5" value="130">
+        <button class="zoom-btn" id="zoom-in">+</button>
+      </div>
+      <button class="zoom-reset" onclick="resetZoom()">↺ Ripristina predefinito (130%)</button>
     </div>
     <div class="theme-toggle" id="theme-toggle">
       <span id="theme-icon">☀️</span>
@@ -874,14 +930,39 @@ document.getElementById('u-currency').addEventListener('change', function(){
 // ═══════════════════════════════════════════════
 //  ZOOM
 // ═══════════════════════════════════════════════
-let zoom = 110;
+const ZOOM_DEFAULT = 130;
+let zoom = ZOOM_DEFAULT;
+
 function applyZoom() {
-  document.documentElement.style.setProperty('--zoom', zoom/100);
+  zoom = Math.min(180, Math.max(70, zoom));
+  document.documentElement.style.setProperty('--zoom', zoom / 100);
   document.getElementById('zoom-val').textContent = zoom + '%';
+  const slider = document.getElementById('zoom-slider');
+  if (slider) {
+    slider.value = zoom;
+    // Update gradient fill
+    const pct = ((zoom - 70) / (180 - 70)) * 100;
+    slider.style.background = `linear-gradient(to right, var(--accent) 0%, var(--accent) ${pct}%, var(--bg4) ${pct}%, var(--bg4) 100%)`;
+  }
   data.settings.zoom = zoom; save();
 }
-document.getElementById('zoom-in').onclick = () => { if(zoom < 160) { zoom += 10; applyZoom(); }};
-document.getElementById('zoom-out').onclick = () => { if(zoom > 70) { zoom -= 10; applyZoom(); }};
+
+function resetZoom() { zoom = ZOOM_DEFAULT; applyZoom(); }
+
+document.getElementById('zoom-in').onclick  = () => { zoom = Math.min(180, zoom + 5); applyZoom(); };
+document.getElementById('zoom-out').onclick = () => { zoom = Math.max(70,  zoom - 5); applyZoom(); };
+document.getElementById('zoom-slider').addEventListener('input', function() {
+  zoom = parseInt(this.value); applyZoom();
+});
+
+// Keyboard shortcuts: Ctrl+Plus / Ctrl+Minus / Ctrl+0
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey || e.metaKey) {
+    if (e.key === '=' || e.key === '+') { e.preventDefault(); zoom = Math.min(180, zoom + 5); applyZoom(); }
+    if (e.key === '-')                  { e.preventDefault(); zoom = Math.max(70,  zoom - 5); applyZoom(); }
+    if (e.key === '0')                  { e.preventDefault(); resetZoom(); }
+  }
+});
 
 // ═══════════════════════════════════════════════
 //  THEME
@@ -1710,7 +1791,7 @@ function toast(msg, type='') {
 // ═══════════════════════════════════════════════
 function init() {
   load();
-  zoom = data.settings.zoom || 110; applyZoom();
+  zoom = data.settings.zoom || ZOOM_DEFAULT; applyZoom();
   if (data.settings.theme === 'light') {
     isDark = false; document.body.classList.add('theme-light');
     document.getElementById('theme-icon').textContent = '🌙';
