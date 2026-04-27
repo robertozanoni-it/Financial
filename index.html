@@ -279,6 +279,49 @@
   .search-bar .form-control { flex: 1; min-width: 160px; }
   .search-results-info { font-size: 0.78rem; color: var(--text2); margin-bottom: 12px; }
 
+
+/* ── ADVANCED SEARCH / TOTALS ── */
+.search-bar-advanced {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 10px;
+}
+
+.search-bar-advanced .wide {
+  grid-column: span 2;
+  min-width: 220px;
+}
+
+.total-view-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.total-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.total-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+
   /* ── MODAL ── */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
   .modal-overlay.open { display: flex; }
@@ -641,34 +684,81 @@
   </div>
 
   <!-- RICERCA -->
-  <div class="page" id="page-ricerca">
-    <div class="card">
-      <h3>Ricerca Avanzata</h3>
-      <div class="search-bar">
-        <input class="form-control" id="s-text" placeholder="🔍 Cerca descrizione, nota...">
-        <select class="form-control" id="s-type" style="max-width:140px">
-          <option value="">Tutti i tipi</option>
-          <option value="entrata">Entrate</option>
-          <option value="uscita">Uscite</option>
-        </select>
-        <select class="form-control" id="s-cat" style="max-width:160px">
-          <option value="">Tutte le categorie</option>
-        </select>
-        <select class="form-control" id="s-month" style="max-width:140px">
-          <option value="">Tutti i mesi</option>
-        </select>
-        <select class="form-control" id="s-year" style="max-width:110px">
-          <option value="">Tutti gli anni</option>
-        </select>
-        <button class="btn btn-primary" onclick="doSearch()">🔍 Cerca</button>
-        <button class="btn btn-secondary" onclick="clearSearch()">✕</button>
-      </div>
-    </div>
-    <div class="search-results-info" id="search-info"></div>
-    <div class="card">
-      <div class="table-wrap" id="search-table"></div>
+<div class="page" id="page-ricerca">
+  <div class="card">
+    <h3>Ricerca Avanzata</h3>
+
+    <div class="search-bar search-bar-advanced">
+      <input class="form-control wide" id="s-text" placeholder="🔍 Cerca per descrizione o note...">
+
+      <select class="form-control" id="s-field">
+        <option value="both">Descrizione + note</option>
+        <option value="desc">Solo descrizione</option>
+        <option value="note">Solo note</option>
+      </select>
+
+      <select class="form-control" id="s-type">
+        <option value="">Entrate + uscite</option>
+        <option value="entrata">Solo entrate</option>
+        <option value="uscita">Solo spese / uscite</option>
+      </select>
+
+      <select class="form-control" id="s-cat">
+        <option value="">Tutte le categorie</option>
+      </select>
+
+      <select class="form-control" id="s-year">
+        <option value="">Tutti gli anni</option>
+      </select>
+
+      <select class="form-control" id="s-month">
+        <option value="">Tutti i mesi</option>
+      </select>
+
+      <select class="form-control" id="s-day">
+        <option value="">Tutti i giorni</option>
+      </select>
+
+      <button class="btn btn-primary" onclick="doSearch()">🔍 Cerca</button>
+      <button class="btn btn-secondary" onclick="clearSearch()">✕ Pulisci</button>
     </div>
   </div>
+
+  <div class="search-results-info" id="search-info"></div>
+
+  <div class="card">
+    <h3>Risultati Ricerca</h3>
+    <div class="table-wrap" id="search-table"></div>
+  </div>
+
+  <div class="card">
+    <div class="total-view-head">
+      <div>
+        <h3 style="margin-bottom:6px">Vista Totali Spese</h3>
+        <div style="font-size:0.78rem;color:var(--text2)">
+          Usa gli stessi filtri sopra, ma calcola solo le spese / uscite.
+        </div>
+      </div>
+
+      <div class="flex-row">
+        <select class="form-control" id="expense-total-group" style="width:auto">
+          <option value="year">Totale per anno</option>
+          <option value="month">Totale per mese</option>
+          <option value="week">Totale per settimana</option>
+          <option value="category">Totale per categoria</option>
+          <option value="date">Totale per data</option>
+          <option value="desc">Totale per descrizione</option>
+          <option value="note">Totale per note</option>
+        </select>
+
+        <button class="btn btn-primary" onclick="renderExpenseTotals()">📊 Vedi totali</button>
+      </div>
+    </div>
+
+    <div id="expense-total-summary"></div>
+    <div class="table-wrap" id="expense-total-table"></div>
+  </div>
+</div>
 
   <!-- STAMPA -->
   <div class="page" id="page-stampa">
@@ -1584,67 +1674,497 @@ function renderRecurring() {
 }
 
 // ═══════════════════════════════════════════════
-//  SEARCH
+// // ═══════════════════════════════════════════════
+//  SEARCH + TOTAL EXPENSE VIEWS
 // ═══════════════════════════════════════════════
-function renderSearch() {
+function parseDateParts(dateStr) {
+  if (!dateStr) return null;
+  const parts = String(dateStr).split('-').map(Number);
+  if (parts.length !== 3 || parts.some(isNaN)) return null;
+  return { y: parts[0], m: parts[1], d: parts[2] };
+}
+
+function localDateFromISO(dateStr) {
+  const p = parseDateParts(dateStr);
+  if (!p) return null;
+  return new Date(p.y, p.m - 1, p.d);
+}
+
+function pad2(n) {
+  return String(n).padStart(2, '0');
+}
+
+function getISOWeekInfo(dateStr) {
+  const d = localDateFromISO(dateStr);
+  if (!d) return { year: '—', week: '—' };
+
+  d.setHours(0, 0, 0, 0);
+
+  // ISO week: Monday first day, week 1 contains first Thursday
+  const day = d.getDay() || 7;
+  d.setDate(d.getDate() + 4 - day);
+
+  const weekYear = d.getFullYear();
+  const yearStart = new Date(weekYear, 0, 1);
+  const week = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+
+  return { year: weekYear, week };
+}
+
+function getCatById(id) {
+  return data.categories.find(c => c.id === id) || {
+    id: '',
+    name: 'Senza categoria',
+    color: '#666',
+    subcategories: [],
+    note: ''
+  };
+}
+
+function getSubcatName(tx, cat) {
+  const sub = cat.subcategories?.find(s => s.id === tx.subcategory);
+  return sub ? sub.name : '';
+}
+
+function getSearchFilters() {
+  return {
+    text: (document.getElementById('s-text')?.value || '').trim().toLowerCase(),
+    field: document.getElementById('s-field')?.value || 'both',
+    type: document.getElementById('s-type')?.value || '',
+    cat: document.getElementById('s-cat')?.value || '',
+    year: document.getElementById('s-year')?.value || '',
+    month: document.getElementById('s-month')?.value || '',
+    day: document.getElementById('s-day')?.value || ''
+  };
+}
+
+function txMatchesSearch(t, filters, forceExpense = false) {
+  const cat = getCatById(t.category);
+  const desc = (t.desc || '').toLowerCase();
+  const note = (t.note || '').toLowerCase();
+  const catName = (cat.name || '').toLowerCase();
+  const catNote = (cat.note || '').toLowerCase();
+  const parts = parseDateParts(t.date);
+
+  if (forceExpense && t.type !== 'uscita') return false;
+
+  if (filters.type && t.type !== filters.type) return false;
+  if (filters.cat && t.category !== filters.cat) return false;
+
+  if (filters.year) {
+    if (!parts || parts.y !== parseInt(filters.year)) return false;
+  }
+
+  if (filters.month !== '') {
+    if (!parts || parts.m - 1 !== parseInt(filters.month)) return false;
+  }
+
+  if (filters.day) {
+    if (!parts || parts.d !== parseInt(filters.day)) return false;
+  }
+
+  if (filters.text) {
+    let haystack = '';
+
+    if (filters.field === 'desc') {
+      haystack = desc;
+    } else if (filters.field === 'note') {
+      haystack = note + ' ' + catNote;
+    } else {
+      haystack = desc + ' ' + note + ' ' + catName + ' ' + catNote;
+    }
+
+    if (!haystack.includes(filters.text)) return false;
+  }
+
+  return true;
+}
+
+function getFilteredTransactions(forceExpense = false) {
+  const filters = getSearchFilters();
+  return data.transactions
+    .filter(t => txMatchesSearch(t, filters, forceExpense))
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+function refreshSearchSelectOptions() {
   const sCat = document.getElementById('s-cat');
-  if (sCat && sCat.options.length < 2) {
-    sCat.innerHTML = '<option value="">Tutte le categorie</option>' + data.categories.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
-  }
   const sMonth = document.getElementById('s-month');
-  if (sMonth && sMonth.options.length < 2) {
-    sMonth.innerHTML = '<option value="">Tutti i mesi</option>' + MONTHS.map((m,i)=>`<option value="${i}">${m}</option>`).join('');
-  }
   const sYear = document.getElementById('s-year');
-  if (sYear && sYear.options.length < 2) {
-    const years = [...new Set(data.transactions.map(t=>new Date(t.date).getFullYear()))].sort((a,b)=>b-a);
-    sYear.innerHTML = '<option value="">Tutti gli anni</option>' + years.map(y=>`<option value="${y}">${y}</option>`).join('');
+  const sDay = document.getElementById('s-day');
+
+  if (sCat) {
+    const old = sCat.value;
+    sCat.innerHTML =
+      '<option value="">Tutte le categorie</option>' +
+      data.categories
+        .map(c => `<option value="${c.id}">${escHtml(c.name)}</option>`)
+        .join('');
+    sCat.value = old;
   }
-  document.getElementById('search-table').innerHTML = '<div class="empty-state"><div class="emoji">🔍</div>Usa i filtri per cercare</div>';
+
+  if (sMonth) {
+    const old = sMonth.value;
+    sMonth.innerHTML =
+      '<option value="">Tutti i mesi</option>' +
+      MONTHS.map((m, i) => `<option value="${i}">${m}</option>`).join('');
+    sMonth.value = old;
+  }
+
+  if (sYear) {
+    const old = sYear.value;
+    let years = [...new Set(data.transactions.map(t => {
+      const p = parseDateParts(t.date);
+      return p ? p.y : null;
+    }).filter(Boolean))].sort((a, b) => b - a);
+
+    const currentYear = new Date().getFullYear();
+    if (!years.includes(currentYear)) years.unshift(currentYear);
+
+    sYear.innerHTML =
+      '<option value="">Tutti gli anni</option>' +
+      years.map(y => `<option value="${y}">${y}</option>`).join('');
+    sYear.value = old;
+  }
+
+  if (sDay) {
+    const old = sDay.value;
+    sDay.innerHTML =
+      '<option value="">Tutti i giorni</option>' +
+      Array.from({ length: 31 }, (_, i) => {
+        const day = i + 1;
+        return `<option value="${day}">${day}</option>`;
+      }).join('');
+    sDay.value = old;
+  }
+}
+
+function renderSearch() {
+  refreshSearchSelectOptions();
+
+  const textInput = document.getElementById('s-text');
+  if (textInput && !textInput._searchEnterAttached) {
+    textInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') doSearch();
+    });
+    textInput._searchEnterAttached = true;
+  }
+
+  document.getElementById('search-info').textContent = '';
+  document.getElementById('search-table').innerHTML =
+    '<div class="empty-state"><div class="emoji">🔍</div>Usa i filtri per cercare per categoria, tipo, anno, mese, giorno, descrizione o note</div>';
+
+  document.getElementById('expense-total-summary').innerHTML = '';
+  document.getElementById('expense-total-table').innerHTML =
+    '<div class="empty-state"><div class="emoji">📊</div>Seleziona una vista e clicca “Vedi totali”</div>';
 }
 
 function doSearch() {
-  const text = document.getElementById('s-text').value.toLowerCase();
-  const type = document.getElementById('s-type').value;
-  const cat = document.getElementById('s-cat').value;
-  const month = document.getElementById('s-month').value;
-  const year = document.getElementById('s-year').value;
-  let txs = [...data.transactions];
-  if (text) txs = txs.filter(t => t.desc.toLowerCase().includes(text) || (t.note||'').toLowerCase().includes(text));
-  if (type) txs = txs.filter(t => t.type === type);
-  if (cat) txs = txs.filter(t => t.category === cat);
-  if (month !== '') txs = txs.filter(t => new Date(t.date).getMonth() === parseInt(month));
-  if (year) txs = txs.filter(t => new Date(t.date).getFullYear() === parseInt(year));
-  txs.sort((a,b) => new Date(b.date)-new Date(a.date));
-  document.getElementById('search-info').textContent = `${txs.length} risultat${txs.length===1?'o':'i'} trovati`;
+  const txs = getFilteredTransactions(false);
+
+  const totalIn = txs
+    .filter(t => t.type === 'entrata')
+    .reduce((s, t) => s + parseFloat(t.amount || 0), 0);
+
+  const totalOut = txs
+    .filter(t => t.type === 'uscita')
+    .reduce((s, t) => s + parseFloat(t.amount || 0), 0);
+
+  const saldo = totalIn - totalOut;
+
+  document.getElementById('search-info').innerHTML = `
+    <span class="total-chip">🔎 ${txs.length} risultat${txs.length === 1 ? 'o' : 'i'}</span>
+    <span class="total-chip">📈 Entrate: <b class="amount-pos">${fmt(totalIn)}</b></span>
+    <span class="total-chip">📉 Spese: <b class="amount-neg">${fmt(totalOut)}</b></span>
+    <span class="total-chip">💰 Saldo: <b style="color:${saldo >= 0 ? 'var(--success)' : 'var(--danger)'}">${fmt(saldo)}</b></span>
+  `;
+
   if (!txs.length) {
-    document.getElementById('search-table').innerHTML = '<div class="empty-state"><div class="emoji">🔍</div>Nessun risultato</div>'; return;
+    document.getElementById('search-table').innerHTML =
+      '<div class="empty-state"><div class="emoji">🔍</div>Nessun risultato</div>';
+    return;
   }
-  const total = txs.reduce((s,t)=>s+(t.type==='entrata'?1:-1)*parseFloat(t.amount),0);
+
   document.getElementById('search-table').innerHTML = `
-    <div style="margin-bottom:12px;font-size:0.82rem;color:var(--text2)">Saldo filtrato: <b style="color:${total>=0?'var(--success)':'var(--danger)'}">${fmt(Math.abs(total))}</b></div>
     <table>
-    <thead><tr><th>Data</th><th>Tipo</th><th>Descrizione</th><th>Categoria</th><th>Sottocategoria</th><th>Note</th><th>Importo</th></tr></thead>
-    <tbody>${txs.map(t => {
-      const cat2 = data.categories.find(c=>c.id===t.category)||{name:'—',color:'#666',subcategories:[]};
-      const subcat = cat2.subcategories?.find(s=>s.id===t.subcategory);
-      const cur = t.currency || sym();
-      return `<tr>
-        <td style="font-family:'Space Mono',monospace;font-size:0.78rem">${fmtDate(t.date)}</td>
-        <td><span style="color:${t.type==='entrata'?'var(--success)':'var(--danger)'};font-size:0.75rem;font-weight:600">${t.type==='entrata'?'↑ Entrata':'↓ Uscita'}</span></td>
-        <td>${escHtml(t.desc)}</td>
-        <td><span class="tag" style="background:${cat2.color}22;color:${cat2.color}"><span class="tag-dot" style="background:${cat2.color}"></span>${cat2.name}</span></td>
-        <td>${subcat ? `<span class="subcat-badge">📂 ${escHtml(subcat.name)}</span>` : '<span style="color:var(--text3);font-size:0.75rem">—</span>'}</td>
-        <td><div class="note-cell" title="${escHtml(t.note||'')}">${t.note ? escHtml(t.note) : '<span style="color:var(--text3)">—</span>'}</div></td>
-        <td class="${t.type==='entrata'?'amount-pos':'amount-neg'}">${t.type==='entrata'?'+':'-'}${fmt(t.amount, cur)}</td>
-      </tr>`;
-    }).join('')}</tbody></table>`;
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Tipo</th>
+          <th>Descrizione</th>
+          <th>Categoria</th>
+          <th>Sottocategoria</th>
+          <th>Note</th>
+          <th>Importo</th>
+          <th>Azioni</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${txs.map(t => {
+          const cat = getCatById(t.category);
+          const subcatName = getSubcatName(t, cat);
+          const cur = t.currency || sym();
+
+          return `
+            <tr>
+              <td style="font-family:'Space Mono',monospace;font-size:0.78rem">${fmtDate(t.date)}</td>
+
+              <td>
+                <span style="color:${t.type === 'entrata' ? 'var(--success)' : 'var(--danger)'};font-size:0.75rem;font-weight:600">
+                  ${t.type === 'entrata' ? '↑ Entrata' : '↓ Spesa'}
+                </span>
+              </td>
+
+              <td>${escHtml(t.desc)}</td>
+
+              <td>
+                <span class="tag" style="background:${cat.color}22;color:${cat.color}">
+                  <span class="tag-dot" style="background:${cat.color}"></span>
+                  ${escHtml(cat.name)}
+                </span>
+              </td>
+
+              <td>
+                ${subcatName
+                  ? `<span class="subcat-badge">📂 ${escHtml(subcatName)}</span>`
+                  : '<span style="color:var(--text3);font-size:0.75rem">—</span>'
+                }
+              </td>
+
+              <td>
+                <div class="note-cell" title="${escHtml(t.note || '')}">
+                  ${t.note ? escHtml(t.note) : '<span style="color:var(--text3)">—</span>'}
+                </div>
+              </td>
+
+              <td class="${t.type === 'entrata' ? 'amount-pos' : 'amount-neg'}">
+                ${t.type === 'entrata' ? '+' : '-'}${fmt(t.amount, cur)}
+              </td>
+
+              <td style="white-space:nowrap">
+                <button class="icon-btn" onclick="editTx('${t.id}')" title="Modifica">✏️</button>
+                <button class="icon-btn" onclick="deleteTx('${t.id}')" title="Elimina">🗑️</button>
+              </td>
+            </tr>
+          `;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
 }
 
 function clearSearch() {
-  ['s-text','s-type','s-cat','s-month','s-year'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  ['s-text', 's-field', 's-type', 's-cat', 's-month', 's-year', 's-day'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = id === 's-field' ? 'both' : '';
+  });
+
   document.getElementById('search-info').textContent = '';
-  document.getElementById('search-table').innerHTML = '<div class="empty-state"><div class="emoji">🔍</div>Usa i filtri per cercare</div>';
+  document.getElementById('search-table').innerHTML =
+    '<div class="empty-state"><div class="emoji">🔍</div>Usa i filtri per cercare</div>';
+
+  document.getElementById('expense-total-summary').innerHTML = '';
+  document.getElementById('expense-total-table').innerHTML =
+    '<div class="empty-state"><div class="emoji">📊</div>Seleziona una vista e clicca “Vedi totali”</div>';
+}
+
+function getExpenseGroupInfo(t, groupBy) {
+  const p = parseDateParts(t.date);
+  const cat = getCatById(t.category);
+
+  if (groupBy === 'year') {
+    return {
+      key: p ? String(p.y) : 'Senza anno',
+      label: p ? String(p.y) : 'Senza anno',
+      sort: p ? p.y : 0
+    };
+  }
+
+  if (groupBy === 'month') {
+    return {
+      key: p ? `${p.y}-${pad2(p.m)}` : 'Senza mese',
+      label: p ? `${MONTHS[p.m - 1]} ${p.y}` : 'Senza mese',
+      sort: p ? Number(`${p.y}${pad2(p.m)}`) : 0
+    };
+  }
+
+  if (groupBy === 'week') {
+    const w = getISOWeekInfo(t.date);
+    return {
+      key: `${w.year}-W${pad2(w.week)}`,
+      label: `Settimana ${pad2(w.week)} / ${w.year}`,
+      sort: Number(`${w.year}${pad2(w.week)}`) || 0
+    };
+  }
+
+  if (groupBy === 'category') {
+    return {
+      key: cat.id || 'no-cat',
+      label: cat.name || 'Senza categoria',
+      sort: cat.name || ''
+    };
+  }
+
+  if (groupBy === 'date') {
+    return {
+      key: t.date || 'Senza data',
+      label: t.date ? fmtDate(t.date) : 'Senza data',
+      sort: t.date || ''
+    };
+  }
+
+  if (groupBy === 'desc') {
+    const label = (t.desc || '').trim() || 'Senza descrizione';
+    return {
+      key: label.toLowerCase(),
+      label,
+      sort: label.toLowerCase()
+    };
+  }
+
+  if (groupBy === 'note') {
+    const label = (t.note || '').trim() || 'Senza note';
+    return {
+      key: label.toLowerCase(),
+      label,
+      sort: label.toLowerCase()
+    };
+  }
+
+  return {
+    key: 'all',
+    label: 'Totale spese',
+    sort: ''
+  };
+}
+
+function renderExpenseTotals() {
+  const groupBy = document.getElementById('expense-total-group')?.value || 'year';
+  const txs = getFilteredTransactions(true);
+
+  if (!txs.length) {
+    document.getElementById('expense-total-summary').innerHTML = '';
+    document.getElementById('expense-total-table').innerHTML =
+      '<div class="empty-state"><div class="emoji">📭</div>Nessuna spesa trovata con i filtri selezionati</div>';
+    return;
+  }
+
+  const groups = new Map();
+
+  txs.forEach(t => {
+    const g = getExpenseGroupInfo(t, groupBy);
+    const amount = parseFloat(t.amount || 0);
+
+    if (!groups.has(g.key)) {
+      groups.set(g.key, {
+        key: g.key,
+        label: g.label,
+        sort: g.sort,
+        total: 0,
+        count: 0,
+        minDate: t.date,
+        maxDate: t.date
+      });
+    }
+
+    const row = groups.get(g.key);
+    row.total += amount;
+    row.count += 1;
+
+    if (t.date < row.minDate) row.minDate = t.date;
+    if (t.date > row.maxDate) row.maxDate = t.date;
+  });
+
+  let rows = [...groups.values()];
+
+  if (['year', 'month', 'week', 'date'].includes(groupBy)) {
+    rows.sort((a, b) => String(b.sort).localeCompare(String(a.sort)));
+  } else {
+    rows.sort((a, b) => b.total - a.total);
+  }
+
+  const total = rows.reduce((s, r) => s + r.total, 0);
+  const count = rows.reduce((s, r) => s + r.count, 0);
+  const average = count ? total / count : 0;
+  const top = rows[0];
+
+  const labels = {
+    year: 'anno',
+    month: 'mese',
+    week: 'settimana',
+    category: 'categoria',
+    date: 'data',
+    desc: 'descrizione',
+    note: 'note'
+  };
+
+  document.getElementById('expense-total-summary').innerHTML = `
+    <div class="total-summary-grid">
+      <div class="summary-card expense">
+        <div class="label">Spese totali filtrate</div>
+        <div class="amount">${fmt(total)}</div>
+        <div class="sub">${count} moviment${count === 1 ? 'o' : 'i'}</div>
+      </div>
+
+      <div class="summary-card">
+        <div class="label">Media per movimento</div>
+        <div class="amount">${fmt(average)}</div>
+        <div class="sub">solo uscite</div>
+      </div>
+
+      <div class="summary-card">
+        <div class="label">Gruppi trovati</div>
+        <div class="amount">${rows.length}</div>
+        <div class="sub">per ${labels[groupBy]}</div>
+      </div>
+
+      <div class="summary-card expense">
+        <div class="label">Voce più alta</div>
+        <div class="amount">${fmt(top.total)}</div>
+        <div class="sub">${escHtml(top.label)}</div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('expense-total-table').innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Raggruppamento</th>
+          <th>Numero spese</th>
+          <th>Periodo</th>
+          <th style="text-align:right">Totale spese</th>
+          <th style="text-align:right">Media</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows.map(r => `
+          <tr>
+            <td style="font-weight:600">${escHtml(r.label)}</td>
+            <td>${r.count}</td>
+            <td style="font-family:'Space Mono',monospace;font-size:0.76rem">
+              ${fmtDate(r.minDate)} → ${fmtDate(r.maxDate)}
+            </td>
+            <td class="amount-neg" style="text-align:right">-${fmt(r.total)}</td>
+            <td style="text-align:right;font-family:'Space Mono',monospace;font-weight:700">${fmt(r.total / r.count)}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" style="text-align:right;font-weight:700;padding:10px 12px;border-top:2px solid var(--border)">
+            Totale
+          </td>
+          <td class="amount-neg" style="text-align:right;padding:10px 12px;border-top:2px solid var(--border)">
+            -${fmt(total)}
+          </td>
+          <td style="text-align:right;padding:10px 12px;border-top:2px solid var(--border)">
+            ${fmt(average)}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  `;
 }
 
 // ═══════════════════════════════════════════════
