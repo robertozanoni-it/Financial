@@ -289,7 +289,7 @@
   .amount-neg { color: var(--danger); font-family: 'Space Mono', monospace; font-weight: 700; }
 
   /* ── CATEGORIES ── */
-  .cats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .cats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
   .cat-card {
     border-radius: 10px;
     padding: 14px;
@@ -298,23 +298,25 @@
     gap: 10px;
     border: 1px solid var(--border);
     cursor: default;
+    overflow: visible;
   }
   .cat-color { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; }
-  .cat-info { flex: 1; }
-  .cat-info .name { font-size: 0.88rem; font-weight: 600; }
+  .cat-info { flex: 1; min-width: 0; overflow: hidden; }
+  .cat-info .name { font-size: 0.88rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .cat-info .type { font-size: 0.7rem; color: var(--text2); margin-top: 2px; }
-  .cat-actions { display: flex; gap: 4px; }
+  .cat-actions { display: flex; gap: 4px; flex-shrink: 0; margin-left: auto; }
   .icon-btn {
-    background: none;
-    border: none;
+    background: var(--bg4);
+    border: 1px solid var(--border);
     cursor: pointer;
-    padding: 4px 6px;
-    border-radius: 5px;
-    font-size: 0.85rem;
-    color: var(--text2);
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: var(--text);
     transition: all 0.15s;
+    line-height: 1;
   }
-  .icon-btn:hover { background: var(--bg4); color: var(--text); }
+  .icon-btn:hover { background: var(--bg3); border-color: var(--accent); }
 
   /* ── CALENDAR ── */
   .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
@@ -658,6 +660,14 @@
   <div class="topbar">
     <h2 id="page-title">Dashboard</h2>
     <div class="topbar-actions" id="topbar-actions"></div>
+    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:2px solid var(--accent);border-radius:8px;padding:5px 12px">
+      <span style="font-size:0.7rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:0.5px">&#x1F4B1; Valuta</span>
+      <select id="currency-sel-top" style="background:transparent;border:none;color:var(--text);font-size:1rem;font-weight:700;cursor:pointer;outline:none;font-family:&#39;Space Mono&#39;,monospace;padding:0 2px">
+        <option value="&#8364;">&#8364; Euro</option>
+        <option value="&#163;">&#163; Pound</option>
+        <option value="$">$ Dollaro</option>
+      </select>
+    </div>
   </div>
 
   <!-- DASHBOARD -->
@@ -1049,10 +1059,14 @@ function sym() { return data.settings.currency; }
 function fmt(n) { return sym() + parseFloat(n||0).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,','); }
 function getCurrency() { return sym(); }
 
-document.getElementById('currency-sel').addEventListener('change', function(){
-  data.settings.currency = this.value;
+function setCurrency(val) {
+  data.settings.currency = val;
+  document.getElementById('currency-sel').value = val;
+  document.getElementById('currency-sel-top').value = val;
   save(); refreshAll();
-});
+}
+document.getElementById('currency-sel').addEventListener('change', function(){ setCurrency(this.value); });
+document.getElementById('currency-sel-top').addEventListener('change', function(){ setCurrency(this.value); });
 
 // ═══════════════════════════════════════════════
 //  ZOOM
@@ -1907,6 +1921,7 @@ function init() {
 
   if (data.settings.currency) {
     document.getElementById('currency-sel').value = data.settings.currency;
+    document.getElementById('currency-sel-top').value = data.settings.currency;
   }
 
   updateBadges();
