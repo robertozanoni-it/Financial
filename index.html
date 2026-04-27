@@ -26,19 +26,10 @@
     --zoom: 1;
   }
   .theme-light {
-    --bg: #f5f5f5;
-    --bg2: #ffffff;
-    --bg3: #ebebeb;
-    --bg4: #e0e0e0;
-    --border: #d0d0d0;
-    --text: #111111;
-    --text2: #555;
-    --text3: #aaa;
-    --accent: #00a875;
-    --accent2: #e85d20;
-    --accent3: #1976d2;
-    --danger: #d32f2f;
-    --success: #388e3c;
+    --bg: #f5f5f5; --bg2: #ffffff; --bg3: #ebebeb; --bg4: #e0e0e0;
+    --border: #d0d0d0; --text: #111111; --text2: #555; --text3: #aaa;
+    --accent: #00a875; --accent2: #e85d20; --accent3: #1976d2;
+    --danger: #d32f2f; --success: #388e3c;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { font-size: calc(16px * var(--zoom)); }
@@ -65,134 +56,36 @@
     transition: transform 0.3s;
     overflow-y: auto;
   }
-  .logo {
-    padding: 22px 18px 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .logo h1 {
-    font-family: 'Space Mono', monospace;
-    font-size: 1rem;
-    color: var(--accent);
-    letter-spacing: -0.5px;
-  }
+  .logo { padding: 22px 18px 16px; border-bottom: 1px solid var(--border); }
+  .logo h1 { font-family: 'Space Mono', monospace; font-size: 1rem; color: var(--accent); letter-spacing: -0.5px; }
   .logo span { color: var(--text2); font-size: 0.7rem; }
   .nav-section { padding: 10px 0; }
-  .nav-section-label {
-    font-size: 0.62rem;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding: 6px 18px 4px;
-  }
+  .nav-section-label { font-size: 0.62rem; color: var(--text3); text-transform: uppercase; letter-spacing: 1.5px; padding: 6px 18px 4px; }
   .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 18px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    color: var(--text2);
-    border-left: 3px solid transparent;
-    transition: all 0.15s;
-    user-select: none;
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 18px; cursor: pointer; font-size: 0.85rem;
+    color: var(--text2); border-left: 3px solid transparent;
+    transition: all 0.15s; user-select: none;
   }
   .nav-item:hover { background: var(--bg3); color: var(--text); }
   .nav-item.active { background: var(--bg3); color: var(--accent); border-left-color: var(--accent); }
   .nav-item .icon { font-size: 1rem; width: 20px; text-align: center; }
-  .nav-item .badge {
-    margin-left: auto;
-    background: var(--accent);
-    color: #000;
-    font-size: 0.6rem;
-    font-weight: 700;
-    padding: 1px 5px;
-    border-radius: 10px;
-  }
-  .sidebar-bottom {
-    margin-top: auto;
-    padding: 12px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .zoom-ctrl {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.75rem;
-    color: var(--text2);
-  }
-  .zoom-ctrl button {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    color: var(--text);
-    width: 24px; height: 24px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    display: flex; align-items: center; justify-content: center;
-  }
+  .nav-item .badge { margin-left: auto; background: var(--accent); color: #000; font-size: 0.6rem; font-weight: 700; padding: 1px 5px; border-radius: 10px; }
+  .sidebar-bottom { margin-top: auto; padding: 12px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+  .zoom-ctrl { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--text2); }
+  .zoom-ctrl button { background: var(--bg3); border: 1px solid var(--border); color: var(--text); width: 24px; height: 24px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
   .zoom-ctrl button:hover { background: var(--bg4); }
   #zoom-val { min-width: 30px; text-align: center; font-family: 'Space Mono', monospace; font-size: 0.7rem; }
-  .theme-toggle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.75rem;
-    color: var(--text2);
-    cursor: pointer;
-    padding: 6px 8px;
-    border-radius: 6px;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    user-select: none;
-  }
+  .theme-toggle { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--text2); cursor: pointer; padding: 6px 8px; border-radius: 6px; background: var(--bg3); border: 1px solid var(--border); user-select: none; }
   .theme-toggle:hover { background: var(--bg4); }
-  .currency-select {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 5px 8px;
-    border-radius: 6px;
-    font-size: 0.78rem;
-    cursor: pointer;
-    width: 100%;
-    font-family: 'DM Sans', sans-serif;
-  }
+  .currency-select { background: var(--bg3); border: 1px solid var(--border); color: var(--text); padding: 5px 8px; border-radius: 6px; font-size: 0.78rem; cursor: pointer; width: 100%; font-family: 'DM Sans', sans-serif; }
 
   /* ── MAIN ── */
-  #main {
-    margin-left: var(--sidebar-w);
-    margin-right: var(--sidebar-r);
-    flex: 1;
-    min-height: 100vh;
-    overflow-y: auto;
-  }
-  .topbar {
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-  }
+  #main { margin-left: var(--sidebar-w); margin-right: var(--sidebar-r); flex: 1; min-height: 100vh; overflow-y: auto; }
+  .topbar { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 50; }
   .topbar h2 { font-size: 1.1rem; font-weight: 600; flex: 1; }
   .topbar-actions { display: flex; gap: 8px; align-items: center; }
-  .btn {
-    padding: 7px 14px;
-    border-radius: 7px;
-    border: none;
-    cursor: pointer;
-    font-size: 0.82rem;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    transition: all 0.15s;
-    display: flex; align-items: center; gap: 5px;
-  }
+  .btn { padding: 7px 14px; border-radius: 7px; border: none; cursor: pointer; font-size: 0.82rem; font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all 0.15s; display: flex; align-items: center; gap: 5px; }
   .btn-primary { background: var(--accent); color: #000; }
   .btn-primary:hover { filter: brightness(1.1); }
   .btn-secondary { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
@@ -207,33 +100,12 @@
   .page.active { display: block; }
 
   /* ── CARDS ── */
-  .card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 18px;
-  }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 18px; }
   .card h3 { font-size: 0.9rem; color: var(--text2); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .summary-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 14px;
-    margin-bottom: 18px;
-  }
-  .summary-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-  }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 18px; }
+  .summary-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
   .summary-card .label { font-size: 0.72rem; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; }
-  .summary-card .amount {
-    font-family: 'Space Mono', monospace;
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-top: 6px;
-  }
+  .summary-card .amount { font-family: 'Space Mono', monospace; font-size: 1.4rem; font-weight: 700; margin-top: 6px; }
   .summary-card.income .amount { color: var(--success); }
   .summary-card.expense .amount { color: var(--danger); }
   .summary-card.balance .amount { color: var(--accent3); }
@@ -243,232 +115,107 @@
   .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
   .form-group { display: flex; flex-direction: column; gap: 5px; }
   .form-group label { font-size: 0.75rem; color: var(--text2); font-weight: 500; }
-  .form-control {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 9px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-family: 'DM Sans', sans-serif;
-    transition: border-color 0.15s;
-    outline: none;
-  }
+  .form-control { background: var(--bg3); border: 1px solid var(--border); color: var(--text); padding: 9px 12px; border-radius: 8px; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; transition: border-color 0.15s; outline: none; }
   .form-control:focus { border-color: var(--accent); }
   .form-control option { background: var(--bg3); }
   select.form-control { cursor: pointer; }
   textarea.form-control { resize: vertical; min-height: 70px; }
 
+  /* ── CURRENCY BADGE in forms ── */
+  .currency-inline {
+    display: flex; align-items: center; gap: 0;
+  }
+  .currency-inline .cur-sym {
+    background: var(--bg4); border: 1px solid var(--border); border-right: none;
+    padding: 9px 11px; border-radius: 8px 0 0 8px; font-family: 'Space Mono', monospace;
+    font-size: 0.9rem; color: var(--accent); font-weight: 700; flex-shrink: 0;
+  }
+  .currency-inline .form-control { border-radius: 0 8px 8px 0; }
+
   /* ── TABLE ── */
   .table-wrap { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
-  thead th {
-    text-align: left;
-    padding: 10px 12px;
-    font-size: 0.7rem;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid var(--border);
-    font-weight: 600;
-  }
+  thead th { text-align: left; padding: 10px 12px; font-size: 0.7rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); font-weight: 600; }
   tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
   tbody tr:hover { background: var(--bg3); }
   td { padding: 10px 12px; vertical-align: middle; }
-  .tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 3px 9px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: 600;
-  }
+  .tag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
   .tag-dot { width: 7px; height: 7px; border-radius: 50%; }
   .amount-pos { color: var(--success); font-family: 'Space Mono', monospace; font-weight: 700; }
   .amount-neg { color: var(--danger); font-family: 'Space Mono', monospace; font-weight: 700; }
+  .subcat-badge { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 4px; font-size: 0.65rem; font-weight: 600; background: var(--bg4); color: var(--text2); border: 1px solid var(--border); margin-left: 4px; }
+  .note-cell { font-size: 0.75rem; color: var(--text2); max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
   /* ── CATEGORIES ── */
-  .cats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
-  .cat-card {
-    border-radius: 10px;
-    padding: 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border: 1px solid var(--border);
-    cursor: default;
-    overflow: visible;
-  }
+  .cats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .cat-card { border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--border); }
+  .cat-card-top { display: flex; align-items: center; gap: 10px; }
   .cat-color { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; }
-  .cat-info { flex: 1; min-width: 0; overflow: hidden; }
+  .cat-info { flex: 1; min-width: 0; }
   .cat-info .name { font-size: 0.88rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .cat-info .type { font-size: 0.7rem; color: var(--text2); margin-top: 2px; }
-  .cat-actions { display: flex; gap: 4px; flex-shrink: 0; margin-left: auto; }
-  .icon-btn {
-    background: var(--bg4);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    padding: 5px 8px;
-    border-radius: 6px;
-    font-size: 1rem;
-    color: var(--text);
-    transition: all 0.15s;
-    line-height: 1;
-  }
+  .cat-actions { display: flex; gap: 4px; flex-shrink: 0; }
+  .icon-btn { background: var(--bg4); border: 1px solid var(--border); cursor: pointer; padding: 5px 8px; border-radius: 6px; font-size: 1rem; color: var(--text); transition: all 0.15s; line-height: 1; }
   .icon-btn:hover { background: var(--bg3); border-color: var(--accent); }
+
+  /* ── SUBCATEGORIES in cat-card ── */
+  .subcats-area { border-top: 1px solid var(--border); padding-top: 8px; }
+  .subcats-label { font-size: 0.65rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+  .subcats-list { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 7px; min-height: 10px; }
+  .subcat-chip {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 8px; border-radius: 5px; font-size: 0.68rem; font-weight: 600;
+    background: var(--bg4); border: 1px solid var(--border); color: var(--text2);
+    cursor: default;
+  }
+  .subcat-chip .del-sub { cursor: pointer; color: var(--text3); font-size: 0.7rem; line-height: 1; padding: 0 2px; border: none; background: none; }
+  .subcat-chip .del-sub:hover { color: var(--danger); }
+  .subcat-add-row { display: flex; gap: 5px; }
+  .subcat-inp { flex: 1; background: var(--bg3); border: 1px solid var(--border); color: var(--text); padding: 5px 8px; border-radius: 6px; font-size: 0.75rem; font-family: 'DM Sans', sans-serif; outline: none; }
+  .subcat-inp:focus { border-color: var(--accent); }
 
   /* ── CALENDAR ── */
   .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
   .cal-header h3 { font-family: 'Space Mono', monospace; font-size: 1rem; }
   .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-  .cal-day-label {
-    text-align: center;
-    font-size: 0.65rem;
-    color: var(--text3);
-    text-transform: uppercase;
-    padding: 6px 0;
-    letter-spacing: 0.5px;
-  }
-  .cal-day {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 6px;
-    min-height: 68px;
-    cursor: pointer;
-    transition: all 0.15s;
-    font-size: 0.78rem;
-  }
+  .cal-day-label { text-align: center; font-size: 0.65rem; color: var(--text3); text-transform: uppercase; padding: 6px 0; letter-spacing: 0.5px; }
+  .cal-day { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 6px; min-height: 68px; cursor: pointer; transition: all 0.15s; font-size: 0.78rem; }
   .cal-day:hover { background: var(--bg4); border-color: var(--accent); }
   .cal-day.today { border-color: var(--accent); }
   .cal-day.empty { background: none; border-color: transparent; cursor: default; }
-  .cal-day.other-month { opacity: 0.35; }
-  .cal-day .day-num {
-    font-weight: 700;
-    font-size: 0.85rem;
-    margin-bottom: 4px;
-  }
+  .cal-day .day-num { font-weight: 700; font-size: 0.85rem; margin-bottom: 4px; }
   .cal-day.today .day-num { color: var(--accent); }
   .cal-day .day-items { display: flex; flex-direction: column; gap: 2px; }
-  .cal-pill {
-    font-size: 0.6rem;
-    padding: 1px 5px;
-    border-radius: 3px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-  }
+  .cal-pill { font-size: 0.6rem; padding: 1px 5px; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
   .cal-pill.income { background: rgba(46,213,115,0.2); color: var(--success); }
   .cal-pill.expense { background: rgba(255,71,87,0.2); color: var(--danger); }
 
   /* ── TASKS SIDEBAR ── */
-  #sidebar-right {
-    width: var(--sidebar-r);
-    background: var(--bg2);
-    border-left: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0; right: 0; bottom: 0;
-    z-index: 100;
-    overflow-y: auto;
-  }
-  .task-header {
-    padding: 22px 16px 14px;
-    border-bottom: 1px solid var(--border);
-  }
+  #sidebar-right { width: var(--sidebar-r); background: var(--bg2); border-left: 1px solid var(--border); display: flex; flex-direction: column; position: fixed; top: 0; right: 0; bottom: 0; z-index: 100; overflow-y: auto; }
+  .task-header { padding: 22px 16px 14px; border-bottom: 1px solid var(--border); }
   .task-header h3 { font-size: 0.9rem; font-weight: 700; }
-  .task-date-sel {
-    margin-top: 10px;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 7px 10px;
-    border-radius: 7px;
-    font-size: 0.8rem;
-    width: 100%;
-    font-family: 'DM Sans', sans-serif;
-    outline: none;
-    cursor: pointer;
-  }
-  .task-add {
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .task-input {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 8px 10px;
-    border-radius: 7px;
-    font-size: 0.82rem;
-    font-family: 'DM Sans', sans-serif;
-    outline: none;
-    resize: none;
-    min-height: 60px;
-  }
+  .task-date-sel { margin-top: 10px; background: var(--bg3); border: 1px solid var(--border); color: var(--text); padding: 7px 10px; border-radius: 7px; font-size: 0.8rem; width: 100%; font-family: 'DM Sans', sans-serif; outline: none; cursor: pointer; }
+  .task-add { padding: 14px 16px; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+  .task-input { background: var(--bg3); border: 1px solid var(--border); color: var(--text); padding: 8px 10px; border-radius: 7px; font-size: 0.82rem; font-family: 'DM Sans', sans-serif; outline: none; resize: none; min-height: 60px; }
   .task-input:focus { border-color: var(--accent); }
   .task-list { padding: 12px 16px; flex: 1; overflow-y: auto; }
-  .task-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 9px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-  }
+  .task-item { display: flex; align-items: flex-start; gap: 9px; padding: 10px 0; border-bottom: 1px solid var(--border); }
   .task-item:last-child { border-bottom: none; }
-  .task-cb {
-    width: 17px; height: 17px;
-    border: 2px solid var(--border);
-    border-radius: 4px;
-    cursor: pointer;
-    flex-shrink: 0;
-    margin-top: 2px;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
-  }
+  .task-cb { width: 17px; height: 17px; border: 2px solid var(--border); border-radius: 4px; cursor: pointer; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
   .task-cb.done { background: var(--accent); border-color: var(--accent); color: #000; font-size: 0.7rem; }
   .task-cb:not(.done):hover { border-color: var(--accent); }
   .task-text { font-size: 0.82rem; flex: 1; line-height: 1.4; }
   .task-text.done { text-decoration: line-through; color: var(--text3); }
   .task-del { background: none; border: none; cursor: pointer; color: var(--text3); font-size: 0.85rem; padding: 2px; }
   .task-del:hover { color: var(--danger); }
-  .task-stats {
-    padding: 10px 16px;
-    border-top: 1px solid var(--border);
-    font-size: 0.72rem;
-    color: var(--text2);
-  }
-  .task-search {
-    padding: 10px 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .task-search input {
-    width: 100%;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 7px 10px;
-    border-radius: 7px;
-    font-size: 0.8rem;
-    font-family: 'DM Sans', sans-serif;
-    outline: none;
-  }
+  .task-stats { padding: 10px 16px; border-top: 1px solid var(--border); font-size: 0.72rem; color: var(--text2); }
+  .task-search { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+  .task-search input { width: 100%; background: var(--bg3); border: 1px solid var(--border); color: var(--text); padding: 7px 10px; border-radius: 7px; font-size: 0.8rem; font-family: 'DM Sans', sans-serif; outline: none; }
   .task-search input:focus { border-color: var(--accent3); }
 
   /* ── RECURRING ── */
   .rec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
-  .rec-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-  }
+  .rec-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
   .rec-card .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
   .rec-card .name { font-size: 0.88rem; font-weight: 600; }
   .rec-badge { font-size: 0.65rem; padding: 2px 8px; border-radius: 10px; font-weight: 700; }
@@ -482,68 +229,32 @@
   .search-bar .form-control { flex: 1; min-width: 160px; }
   .search-results-info { font-size: 0.78rem; color: var(--text2); margin-bottom: 12px; }
 
-  /* ── PRINT ── */
-  .print-options { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
-  .print-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    min-width: 180px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .print-card:hover { border-color: var(--accent); background: var(--bg4); }
-  .print-card .icon { font-size: 2rem; margin-bottom: 8px; }
-  .print-card .title { font-size: 0.88rem; font-weight: 600; }
-  .print-card .sub { font-size: 0.72rem; color: var(--text2); margin-top: 4px; }
-
   /* ── MODAL ── */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(3px);
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
   .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    width: 90%;
-    max-width: 520px;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  }
+  .modal { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 28px; width: 90%; max-width: 560px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
   .modal h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
   .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
   .color-picker-wrap { display: flex; align-items: center; gap: 10px; }
   .color-preview { width: 36px; height: 36px; border-radius: 8px; border: 2px solid var(--border); cursor: pointer; flex-shrink: 0; }
   input[type="color"] { opacity: 0; position: absolute; width: 0; height: 0; }
 
-  /* ── TOAST ── */
-  #toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: var(--bg4);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 20px;
-    font-size: 0.85rem;
-    z-index: 9999;
-    transition: transform 0.3s;
-    pointer-events: none;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  /* ── CURRENCY selector row in modal ── */
+  .modal-currency-row {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg3); border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 12px; margin-bottom: 16px;
   }
+  .modal-currency-row label { font-size: 0.75rem; color: var(--text2); font-weight: 500; flex: 1; }
+  .modal-currency-row select { background: var(--bg4); border: 1px solid var(--border); color: var(--text); padding: 5px 10px; border-radius: 6px; font-size: 0.88rem; font-weight: 700; font-family: 'Space Mono', monospace; cursor: pointer; outline: none; }
+  .modal-currency-row select:focus { border-color: var(--accent); }
+
+  /* ── NOTES textarea ── */
+  .notes-textarea { resize: vertical; min-height: 80px; }
+  .form-group-full { grid-column: 1 / -1; }
+
+  /* ── TOAST ── */
+  #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--bg4); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; font-size: 0.85rem; z-index: 9999; transition: transform 0.3s; pointer-events: none; box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
   #toast.show { transform: translateX(-50%) translateY(0); }
   #toast.success { border-color: var(--success); }
   #toast.error { border-color: var(--danger); }
@@ -561,7 +272,7 @@
   .bar.expense { background: var(--danger); }
   .bar-label { font-size: 0.6rem; color: var(--text3); }
 
-  /* ── PRINT STYLES ── */
+  /* ── PRINT ── */
   @media print {
     #sidebar-left, #sidebar-right, #toast, .topbar-actions, .no-print { display: none !important; }
     #main { margin: 0 !important; }
@@ -583,16 +294,7 @@
 
   /* ── TABS ── */
   .tabs { display: flex; gap: 4px; margin-bottom: 18px; background: var(--bg3); border-radius: 9px; padding: 4px; width: fit-content; }
-  .tab {
-    padding: 7px 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--text2);
-    transition: all 0.15s;
-    user-select: none;
-  }
+  .tab { padding: 7px 18px; border-radius: 6px; cursor: pointer; font-size: 0.82rem; font-weight: 500; color: var(--text2); transition: all 0.15s; user-select: none; }
   .tab.active { background: var(--bg2); color: var(--text); box-shadow: 0 1px 4px rgba(0,0,0,0.3); }
   .tab:hover:not(.active) { color: var(--text); }
 
@@ -656,15 +358,14 @@
 
 <!-- MAIN CONTENT -->
 <main id="main">
-  <!-- TOPBAR -->
   <div class="topbar">
     <h2 id="page-title">Dashboard</h2>
     <div class="topbar-actions" id="topbar-actions"></div>
     <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:2px solid var(--accent);border-radius:8px;padding:5px 12px">
-      <span style="font-size:0.7rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:0.5px">&#x1F4B1; Valuta</span>
-      <select id="currency-sel-top" style="background:transparent;border:none;color:var(--text);font-size:1rem;font-weight:700;cursor:pointer;outline:none;font-family:&#39;Space Mono&#39;,monospace;padding:0 2px">
-        <option value="&#8364;">&#8364; Euro</option>
-        <option value="&#163;">&#163; Pound</option>
+      <span style="font-size:0.7rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:0.5px">💱 Valuta</span>
+      <select id="currency-sel-top" style="background:transparent;border:none;color:var(--text);font-size:1rem;font-weight:700;cursor:pointer;outline:none;font-family:'Space Mono',monospace;padding:0 2px">
+        <option value="€">€ Euro</option>
+        <option value="£">£ Pound</option>
         <option value="$">$ Dollaro</option>
       </select>
     </div>
@@ -673,7 +374,7 @@
   <!-- DASHBOARD -->
   <div class="page active" id="page-dashboard">
     <div class="summary-grid" id="summary-grid"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px" id="chart-section">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
       <div class="card">
         <h3>Andamento Mensile</h3>
         <div class="chart-wrap" id="monthly-chart"></div>
@@ -700,11 +401,28 @@
         </div>
         <div class="form-group">
           <label>Importo</label>
-          <input class="form-control" id="e-amount" type="number" step="0.01" placeholder="0.00">
+          <div class="currency-inline">
+            <span class="cur-sym" id="e-cur-sym">€</span>
+            <input class="form-control" id="e-amount" type="number" step="0.01" placeholder="0.00">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Valuta</label>
+          <select class="form-control" id="e-currency">
+            <option value="€">€ Euro</option>
+            <option value="£">£ Pound</option>
+            <option value="$">$ Dollaro</option>
+          </select>
         </div>
         <div class="form-group">
           <label>Categoria</label>
-          <select class="form-control" id="e-cat"></select>
+          <select class="form-control" id="e-cat" onchange="updateSubcatSelect('e')"></select>
+        </div>
+        <div class="form-group">
+          <label>Sottocategoria</label>
+          <select class="form-control" id="e-subcat">
+            <option value="">— Nessuna —</option>
+          </select>
         </div>
         <div class="form-group">
           <label>Data</label>
@@ -718,9 +436,9 @@
             <option value="annual">Annuale</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-full">
           <label>Note</label>
-          <input class="form-control" id="e-note" placeholder="Opzionale">
+          <textarea class="form-control notes-textarea" id="e-note" placeholder="Aggiungi note, dettagli o riferimenti..."></textarea>
         </div>
       </div>
       <div style="margin-top:14px">
@@ -749,11 +467,28 @@
         </div>
         <div class="form-group">
           <label>Importo</label>
-          <input class="form-control" id="u-amount" type="number" step="0.01" placeholder="0.00">
+          <div class="currency-inline">
+            <span class="cur-sym" id="u-cur-sym">€</span>
+            <input class="form-control" id="u-amount" type="number" step="0.01" placeholder="0.00">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Valuta</label>
+          <select class="form-control" id="u-currency">
+            <option value="€">€ Euro</option>
+            <option value="£">£ Pound</option>
+            <option value="$">$ Dollaro</option>
+          </select>
         </div>
         <div class="form-group">
           <label>Categoria</label>
-          <select class="form-control" id="u-cat"></select>
+          <select class="form-control" id="u-cat" onchange="updateSubcatSelect('u')"></select>
+        </div>
+        <div class="form-group">
+          <label>Sottocategoria</label>
+          <select class="form-control" id="u-subcat">
+            <option value="">— Nessuna —</option>
+          </select>
         </div>
         <div class="form-group">
           <label>Data</label>
@@ -767,9 +502,9 @@
             <option value="annual">Annuale</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-full">
           <label>Note</label>
-          <input class="form-control" id="u-note" placeholder="Opzionale">
+          <textarea class="form-control notes-textarea" id="u-note" placeholder="Aggiungi note, dettagli o riferimenti..."></textarea>
         </div>
       </div>
       <div style="margin-top:14px">
@@ -854,7 +589,7 @@
     <div class="card">
       <h3>Ricerca Avanzata</h3>
       <div class="search-bar">
-        <input class="form-control" id="s-text" placeholder="🔍 Cerca per descrizione o nota...">
+        <input class="form-control" id="s-text" placeholder="🔍 Cerca descrizione, nota...">
         <select class="form-control" id="s-type" style="max-width:140px">
           <option value="">Tutti i tipi</option>
           <option value="entrata">Entrate</option>
@@ -950,6 +685,18 @@
   <div class="modal">
     <h3>✏️ Modifica Transazione</h3>
     <input type="hidden" id="edit-tx-id">
+    <input type="hidden" id="edit-tx-type">
+
+    <!-- Valuta inline nel modal -->
+    <div class="modal-currency-row">
+      <label>💱 Valuta per questa transazione</label>
+      <select id="edit-currency">
+        <option value="€">€ Euro</option>
+        <option value="£">£ Pound</option>
+        <option value="$">$ Dollaro</option>
+      </select>
+    </div>
+
     <div class="form-grid">
       <div class="form-group">
         <label>Descrizione</label>
@@ -961,15 +708,21 @@
       </div>
       <div class="form-group">
         <label>Categoria</label>
-        <select class="form-control" id="edit-cat"></select>
+        <select class="form-control" id="edit-cat" onchange="updateSubcatSelect('edit')"></select>
+      </div>
+      <div class="form-group">
+        <label>Sottocategoria</label>
+        <select class="form-control" id="edit-subcat">
+          <option value="">— Nessuna —</option>
+        </select>
       </div>
       <div class="form-group">
         <label>Data</label>
         <input class="form-control" id="edit-date" type="date">
       </div>
-      <div class="form-group">
+      <div class="form-group form-group-full">
         <label>Note</label>
-        <input class="form-control" id="edit-note">
+        <textarea class="form-control notes-textarea" id="edit-note" placeholder="Aggiungi note, dettagli o riferimenti..."></textarea>
       </div>
     </div>
     <div class="modal-actions">
@@ -1004,6 +757,10 @@
           <input type="color" id="edit-color-inp" oninput="document.getElementById('edit-color-preview').style.background=this.value">
         </div>
       </div>
+      <div class="form-group form-group-full">
+        <label>Note / Descrizione categoria</label>
+        <textarea class="form-control notes-textarea" id="edit-cat-note" placeholder="Descrizione o note per questa categoria..."></textarea>
+      </div>
     </div>
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeModal('modal-cat')">Annulla</button>
@@ -1022,61 +779,106 @@
 const MONTHS = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
                 'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
 const MONTHS_SHORT = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+const CURRENCIES = ['€','£','$'];
 
 let data = {
   transactions: [],
   categories: [
-    {id:'cat1', name:'Stipendio', type:'entrata', color:'#2ed573'},
-    {id:'cat2', name:'Freelance', type:'entrata', color:'#4fc3f7'},
-    {id:'cat3', name:'Investimenti', type:'entrata', color:'#ffd700'},
-    {id:'cat4', name:'Affitto', type:'uscita', color:'#ff4757'},
-    {id:'cat5', name:'Alimentari', type:'uscita', color:'#ff6b35'},
-    {id:'cat6', name:'Trasporti', type:'uscita', color:'#a29bfe'},
-    {id:'cat7', name:'Intrattenimento', type:'uscita', color:'#fd79a8'},
-    {id:'cat8', name:'Utenze', type:'uscita', color:'#74b9ff'},
-    {id:'cat9', name:'Salute', type:'uscita', color:'#00cec9'},
-    {id:'cat10', name:'Altro', type:'both', color:'#636e72'},
+    {id:'cat1', name:'Stipendio', type:'entrata', color:'#2ed573', subcategories:[], note:''},
+    {id:'cat2', name:'Freelance', type:'entrata', color:'#4fc3f7', subcategories:[], note:''},
+    {id:'cat3', name:'Investimenti', type:'entrata', color:'#ffd700', subcategories:[], note:''},
+    {id:'cat4', name:'Affitto', type:'uscita', color:'#ff4757', subcategories:[], note:''},
+    {id:'cat5', name:'Alimentari', type:'uscita', color:'#ff6b35', subcategories:[
+      {id:'sub-a1',name:'Supermercato'},{id:'sub-a2',name:'Ristorante'},{id:'sub-a3',name:'Caffè'}
+    ], note:''},
+    {id:'cat6', name:'Trasporti', type:'uscita', color:'#a29bfe', subcategories:[
+      {id:'sub-t1',name:'Benzina'},{id:'sub-t2',name:'Treno'},{id:'sub-t3',name:'Taxi'}
+    ], note:''},
+    {id:'cat7', name:'Intrattenimento', type:'uscita', color:'#fd79a8', subcategories:[], note:''},
+    {id:'cat8', name:'Utenze', type:'uscita', color:'#74b9ff', subcategories:[
+      {id:'sub-u1',name:'Luce'},{id:'sub-u2',name:'Gas'},{id:'sub-u3',name:'Internet'}
+    ], note:''},
+    {id:'cat9', name:'Salute', type:'uscita', color:'#00cec9', subcategories:[], note:''},
+    {id:'cat10', name:'Altro', type:'both', color:'#636e72', subcategories:[], note:''},
   ],
   tasks: [],
-  settings: {currency:'€', theme:'dark', zoom:100}
+  settings: {currency:'€', theme:'dark', zoom:110}
 };
 
 function load() {
   try {
     const s = localStorage.getItem('fintrack_data');
-    if (s) data = JSON.parse(s);
+    if (s) {
+      const parsed = JSON.parse(s);
+      // Migrate old categories without subcategories/note
+      if (parsed.categories) {
+        parsed.categories = parsed.categories.map(c => ({
+          subcategories: [], note: '', ...c
+        }));
+      }
+      // Migrate old transactions without currency/subcategory
+      if (parsed.transactions) {
+        parsed.transactions = parsed.transactions.map(t => ({
+          currency: parsed.settings?.currency || '€',
+          subcategory: '', ...t
+        }));
+      }
+      data = parsed;
+    }
   } catch(e) {}
 }
-function save() {
-  localStorage.setItem('fintrack_data', JSON.stringify(data));
-}
+function save() { localStorage.setItem('fintrack_data', JSON.stringify(data)); }
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
 
 // ═══════════════════════════════════════════════
-//  CURRENCY & SETTINGS
+//  CURRENCY & FORMATTING
 // ═══════════════════════════════════════════════
 function sym() { return data.settings.currency; }
-function fmt(n) { return sym() + parseFloat(n||0).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,','); }
-function getCurrency() { return sym(); }
+function fmt(n, currency) {
+  const c = currency || sym();
+  return c + parseFloat(n||0).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+}
 
 function setCurrency(val) {
   data.settings.currency = val;
   document.getElementById('currency-sel').value = val;
   document.getElementById('currency-sel-top').value = val;
+  // Sync form selectors
+  ['e-currency','u-currency'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = val;
+  });
+  updateCurSymbols();
   save(); refreshAll();
 }
+
+function updateCurSymbols() {
+  const v = sym();
+  const es = document.getElementById('e-cur-sym');
+  const us = document.getElementById('u-cur-sym');
+  if (es) es.textContent = v;
+  if (us) us.textContent = v;
+}
+
 document.getElementById('currency-sel').addEventListener('change', function(){ setCurrency(this.value); });
 document.getElementById('currency-sel-top').addEventListener('change', function(){ setCurrency(this.value); });
+
+// Sync per-transaction currency selector to cur-sym label
+document.getElementById('e-currency').addEventListener('change', function(){
+  document.getElementById('e-cur-sym').textContent = this.value;
+});
+document.getElementById('u-currency').addEventListener('change', function(){
+  document.getElementById('u-cur-sym').textContent = this.value;
+});
 
 // ═══════════════════════════════════════════════
 //  ZOOM
 // ═══════════════════════════════════════════════
-let zoom = 110; // default bigger
+let zoom = 110;
 function applyZoom() {
   document.documentElement.style.setProperty('--zoom', zoom/100);
   document.getElementById('zoom-val').textContent = zoom + '%';
-  data.settings.zoom = zoom;
-  save();
+  data.settings.zoom = zoom; save();
 }
 document.getElementById('zoom-in').onclick = () => { if(zoom < 160) { zoom += 10; applyZoom(); }};
 document.getElementById('zoom-out').onclick = () => { if(zoom > 70) { zoom -= 10; applyZoom(); }};
@@ -1090,34 +892,24 @@ document.getElementById('theme-toggle').onclick = function(){
   document.body.classList.toggle('theme-light', !isDark);
   document.getElementById('theme-icon').textContent = isDark ? '☀️' : '🌙';
   document.getElementById('theme-label').textContent = isDark ? 'Tema Chiaro' : 'Tema Scuro';
-  data.settings.theme = isDark ? 'dark' : 'light';
-  save();
+  data.settings.theme = isDark ? 'dark' : 'light'; save();
 };
 
 // ═══════════════════════════════════════════════
 //  NAVIGATION
 // ═══════════════════════════════════════════════
 const PAGES = {
-  dashboard: 'Dashboard',
-  entrate: 'Entrate',
-  uscite: 'Uscite',
-  categorie: 'Categorie',
-  calendario: 'Calendario',
-  ricorrenti: 'Ricorrenti',
-  ricerca: 'Ricerca',
-  stampa: 'Stampa & Report',
-  backup: 'Backup & Ripristino'
+  dashboard: 'Dashboard', entrate: 'Entrate', uscite: 'Uscite',
+  categorie: 'Categorie', calendario: 'Calendario', ricorrenti: 'Ricorrenti',
+  ricerca: 'Ricerca', stampa: 'Stampa & Report', backup: 'Backup & Ripristino'
 };
 function navTo(page) {
   document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
   document.querySelectorAll('.page').forEach(el => el.classList.toggle('active', el.id === 'page-' + page));
   document.getElementById('page-title').textContent = PAGES[page] || page;
-  renderPage(page);
-  setupTopbar(page);
+  renderPage(page); setupTopbar(page);
 }
-document.querySelectorAll('.nav-item').forEach(el => {
-  el.addEventListener('click', () => navTo(el.dataset.page));
-});
+document.querySelectorAll('.nav-item').forEach(el => el.addEventListener('click', () => navTo(el.dataset.page)));
 
 function setupTopbar(page) {
   const tb = document.getElementById('topbar-actions');
@@ -1144,12 +936,11 @@ function renderPage(page) {
 }
 
 function refreshAll() {
-  updateBadges();
+  updateBadges(); updateCurSymbols();
   const active = document.querySelector('.page.active');
   if (active) {
     const page = active.id.replace('page-','');
-    renderPage(page);
-    setupTopbar(page);
+    renderPage(page); setupTopbar(page);
   }
 }
 
@@ -1163,14 +954,11 @@ function updateBadges() {
 // ═══════════════════════════════════════════════
 function renderDashboard() {
   const now = new Date();
-  const thisMonth = now.getMonth();
-  const thisYear = now.getFullYear();
-
+  const thisMonth = now.getMonth(), thisYear = now.getFullYear();
   const txThisMonth = data.transactions.filter(t => {
     const d = new Date(t.date);
     return d.getMonth() === thisMonth && d.getFullYear() === thisYear;
   });
-
   const totalIncome = data.transactions.filter(t=>t.type==='entrata').reduce((s,t)=>s+parseFloat(t.amount),0);
   const totalExpense = data.transactions.filter(t=>t.type==='uscita').reduce((s,t)=>s+parseFloat(t.amount),0);
   const monthIncome = txThisMonth.filter(t=>t.type==='entrata').reduce((s,t)=>s+parseFloat(t.amount),0);
@@ -1190,16 +978,15 @@ function renderDashboard() {
     <div class="summary-card balance">
       <div class="label">Saldo Totale</div>
       <div class="amount" style="color:${totalIncome-totalExpense>=0?'var(--success)':'var(--danger)'}">${fmt(totalIncome-totalExpense)}</div>
-      <div class="sub">Entrate - Uscite</div>
+      <div class="sub">Entrate − Uscite</div>
     </div>
     <div class="summary-card" style="background:var(--bg3)">
       <div class="label">Questo Mese</div>
       <div class="amount" style="color:${monthIncome-monthExpense>=0?'var(--success)':'var(--danger)'}">${fmt(monthIncome-monthExpense)}</div>
       <div class="sub">${MONTHS[thisMonth]} ${thisYear}</div>
-    </div>
-  `;
+    </div>`;
 
-  // Monthly chart (last 6 months)
+  // Monthly chart
   let chartHTML = '<div class="bar-chart">';
   const maxVal = Math.max(1, ...[...Array(6)].map((_,i) => {
     const d = new Date(thisYear, thisMonth-i, 1);
@@ -1228,17 +1015,21 @@ function renderDashboard() {
   </div>`;
   document.getElementById('monthly-chart').innerHTML = chartHTML;
 
-  // Recent transactions
+  // Recent
   const recent = [...data.transactions].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,5);
-  if (recent.length === 0) {
+  if (!recent.length) {
     document.getElementById('recent-transactions').innerHTML = '<div class="empty-state"><div class="emoji">💸</div>Nessuna transazione</div>';
   } else {
     document.getElementById('recent-transactions').innerHTML = recent.map(t => {
       const cat = data.categories.find(c=>c.id===t.category)||{name:'—',color:'#666'};
+      const subcat = cat.subcategories?.find(s=>s.id===t.subcategory);
       return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
         <div style="width:8px;height:8px;border-radius:50%;background:${cat.color};flex-shrink:0"></div>
-        <div style="flex:1;font-size:0.82rem">${t.desc}</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.82rem;font-weight:700;color:${t.type==='entrata'?'var(--success)':'var(--danger)'}">${t.type==='entrata'?'+':'-'}${fmt(t.amount)}</div>
+        <div style="flex:1;font-size:0.82rem">
+          <div>${t.desc}</div>
+          ${subcat ? `<div style="font-size:0.68rem;color:var(--text3)">${cat.name} › ${subcat.name}</div>` : ''}
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.82rem;font-weight:700;color:${t.type==='entrata'?'var(--success)':'var(--danger)'}">${t.type==='entrata'?'+':'-'}${fmt(t.amount, t.currency)}</div>
       </div>`;
     }).join('');
   }
@@ -1260,6 +1051,45 @@ function renderDashboard() {
 }
 
 // ═══════════════════════════════════════════════
+//  SUBCATEGORY HELPERS
+// ═══════════════════════════════════════════════
+function updateSubcatSelect(prefix) {
+  const catSelId = prefix === 'edit' ? 'edit-cat' : prefix + '-cat';
+  const subcatSelId = prefix === 'edit' ? 'edit-subcat' : prefix + '-subcat';
+  const catId = document.getElementById(catSelId)?.value;
+  const sel = document.getElementById(subcatSelId);
+  if (!sel) return;
+  const cat = data.categories.find(c => c.id === catId);
+  const subs = cat?.subcategories || [];
+  sel.innerHTML = '<option value="">— Nessuna —</option>' + subs.map(s =>
+    `<option value="${s.id}">${s.name}</option>`
+  ).join('');
+}
+
+function addSubcategory(catId) {
+  const inp = document.getElementById('subcat-inp-' + catId);
+  if (!inp) return;
+  const name = inp.value.trim();
+  if (!name) { toast('Inserisci un nome per la sottocategoria', 'error'); return; }
+  const cat = data.categories.find(c => c.id === catId);
+  if (!cat) return;
+  cat.subcategories.push({ id: uid(), name });
+  inp.value = '';
+  save(); renderCategories();
+  toast('✅ Sottocategoria aggiunta!', 'success');
+}
+
+function deleteSubcategory(catId, subId) {
+  const cat = data.categories.find(c => c.id === catId);
+  if (!cat) return;
+  cat.subcategories = cat.subcategories.filter(s => s.id !== subId);
+  // Clear from transactions
+  data.transactions.forEach(t => { if (t.category === catId && t.subcategory === subId) t.subcategory = ''; });
+  save(); renderCategories();
+  toast('🗑️ Sottocategoria eliminata', 'success');
+}
+
+// ═══════════════════════════════════════════════
 //  TRANSACTIONS
 // ═══════════════════════════════════════════════
 function populateCatSelect(selId, type, val='') {
@@ -1272,68 +1102,72 @@ function populateCatSelect(selId, type, val='') {
 }
 
 function addTransaction(type) {
-  const prefix = type === 'entrata' ? 'e' : 'u';
-  const desc = document.getElementById(prefix+'-desc').value.trim();
-  const amount = parseFloat(document.getElementById(prefix+'-amount').value);
-  const cat = document.getElementById(prefix+'-cat').value;
-  const date = document.getElementById(prefix+'-date').value;
-  const rec = document.getElementById(prefix+'-rec').value;
-  const note = document.getElementById(prefix+'-note').value.trim();
+  const p = type === 'entrata' ? 'e' : 'u';
+  const desc = document.getElementById(p+'-desc').value.trim();
+  const amount = parseFloat(document.getElementById(p+'-amount').value);
+  const currency = document.getElementById(p+'-currency').value;
+  const cat = document.getElementById(p+'-cat').value;
+  const subcat = document.getElementById(p+'-subcat').value;
+  const date = document.getElementById(p+'-date').value;
+  const rec = document.getElementById(p+'-rec').value;
+  const note = document.getElementById(p+'-note').value.trim();
 
   if (!desc) { toast('Inserisci una descrizione', 'error'); return; }
   if (!amount || amount <= 0) { toast('Inserisci un importo valido', 'error'); return; }
   if (!date) { toast('Seleziona una data', 'error'); return; }
 
-  const tx = { id: uid(), type, desc, amount, category: cat, date, recurring: rec||null, note };
+  const tx = { id: uid(), type, desc, amount, currency, category: cat, subcategory: subcat, date, recurring: rec||null, note };
   data.transactions.push(tx);
 
-  // If recurring, generate future entries
   if (rec === 'monthly') {
     for (let i = 1; i <= 11; i++) {
-      const d = new Date(date);
-      d.setMonth(d.getMonth() + i);
-      data.transactions.push({...tx, id: uid(), date: d.toISOString().split('T')[0], recurring: 'monthly'});
+      const d = new Date(date); d.setMonth(d.getMonth() + i);
+      data.transactions.push({...tx, id: uid(), date: d.toISOString().split('T')[0]});
     }
   } else if (rec === 'annual') {
-    const d = new Date(date);
-    d.setFullYear(d.getFullYear() + 1);
-    data.transactions.push({...tx, id: uid(), date: d.toISOString().split('T')[0], recurring: 'annual'});
+    const d = new Date(date); d.setFullYear(d.getFullYear() + 1);
+    data.transactions.push({...tx, id: uid(), date: d.toISOString().split('T')[0]});
   }
 
   save();
-  // Reset
-  ['desc','amount','cat','rec','note'].forEach(f => {
-    const el = document.getElementById(prefix+'-'+f);
+  ['desc','amount','cat','subcat','rec','note'].forEach(f => {
+    const el = document.getElementById(p+'-'+f);
     if (el) el.value = '';
   });
+  updateSubcatSelect(p);
   toast(type === 'entrata' ? '✅ Entrata aggiunta!' : '✅ Uscita aggiunta!', 'success');
   refreshAll();
 }
 
 function renderTransactions(type) {
-  const prefix = type === 'entrata' ? 'e' : 'u';
+  const p = type === 'entrata' ? 'e' : 'u';
   const tableId = type === 'entrata' ? 'entrate-table' : 'uscite-table';
   const tbId = type === 'entrata' ? 'tb-total-e' : 'tb-total-u';
 
-  populateCatSelect(prefix+'-cat', type);
+  populateCatSelect(p+'-cat', type);
+  updateSubcatSelect(p);
   const today = new Date().toISOString().split('T')[0];
-  const dateEl = document.getElementById(prefix+'-date');
+  const dateEl = document.getElementById(p+'-date');
   if (dateEl && !dateEl.value) dateEl.value = today;
 
+  // Sync currency select
+  const curEl = document.getElementById(p+'-currency');
+  if (curEl && !curEl._init) { curEl.value = sym(); curEl._init = true; }
+
   // Fill month/year filters
-  const filterMonthEl = document.getElementById(prefix+'-filter-month');
-  const filterYearEl = document.getElementById(prefix+'-filter-year');
-  if (filterMonthEl && filterMonthEl.options.length === 0) {
-    filterMonthEl.innerHTML = '<option value="">Tutti i mesi</option>' + MONTHS.map((m,i)=>`<option value="${i}">${m}</option>`).join('');
+  const fmEl = document.getElementById(p+'-filter-month');
+  const fyEl = document.getElementById(p+'-filter-year');
+  if (fmEl && fmEl.options.length === 0) {
+    fmEl.innerHTML = '<option value="">Tutti i mesi</option>' + MONTHS.map((m,i)=>`<option value="${i}">${m}</option>`).join('');
   }
-  if (filterYearEl && filterYearEl.options.length < 2) {
+  if (fyEl && fyEl.options.length < 2) {
     const years = [...new Set(data.transactions.map(t=>new Date(t.date).getFullYear()))].sort((a,b)=>b-a);
     if (!years.includes(new Date().getFullYear())) years.unshift(new Date().getFullYear());
-    filterYearEl.innerHTML = '<option value="">Tutti gli anni</option>' + years.map(y=>`<option value="${y}">${y}</option>`).join('');
+    fyEl.innerHTML = '<option value="">Tutti gli anni</option>' + years.map(y=>`<option value="${y}">${y}</option>`).join('');
   }
 
-  const fMonth = filterMonthEl ? filterMonthEl.value : '';
-  const fYear = filterYearEl ? filterYearEl.value : '';
+  const fMonth = fmEl ? fmEl.value : '';
+  const fYear = fyEl ? fyEl.value : '';
 
   let txs = data.transactions.filter(t => t.type === type);
   if (fMonth !== '') txs = txs.filter(t => new Date(t.date).getMonth() === parseInt(fMonth));
@@ -1352,18 +1186,26 @@ function renderTransactions(type) {
 
   tableEl.innerHTML = `<table>
     <thead><tr>
-      <th>Data</th><th>Descrizione</th><th>Categoria</th><th>Ricorrente</th><th>Note</th><th>Importo</th><th>Azioni</th>
+      <th>Data</th><th>Descrizione</th><th>Categoria</th><th>Sottocategoria</th><th>Ricorrente</th><th>Note</th><th>Importo</th><th>Azioni</th>
     </tr></thead>
     <tbody>${txs.map(t => {
-      const cat = data.categories.find(c=>c.id===t.category)||{name:'—',color:'#666'};
+      const cat = data.categories.find(c=>c.id===t.category)||{name:'—',color:'#666',subcategories:[]};
+      const subcat = cat.subcategories?.find(s=>s.id===t.subcategory);
       const recLabel = t.recurring === 'monthly' ? '🔄 Mensile' : t.recurring === 'annual' ? '📅 Annuale' : '—';
+      const cur = t.currency || sym();
       return `<tr>
         <td style="font-family:'Space Mono',monospace;font-size:0.78rem">${fmtDate(t.date)}</td>
-        <td>${t.desc}</td>
+        <td>
+          <div style="font-weight:500">${escHtml(t.desc)}</div>
+        </td>
         <td><span class="tag" style="background:${cat.color}22;color:${cat.color}"><span class="tag-dot" style="background:${cat.color}"></span>${cat.name}</span></td>
+        <td>${subcat ? `<span class="subcat-badge">📂 ${escHtml(subcat.name)}</span>` : '<span style="color:var(--text3);font-size:0.75rem">—</span>'}</td>
         <td><small style="color:var(--text2)">${recLabel}</small></td>
-        <td style="color:var(--text2);font-size:0.78rem">${t.note||'—'}</td>
-        <td class="${type==='entrata'?'amount-pos':'amount-neg'}">${type==='entrata'?'+':'-'}${fmt(t.amount)}</td>
+        <td><div class="note-cell" title="${escHtml(t.note||'')}">${t.note ? escHtml(t.note) : '<span style="color:var(--text3)">—</span>'}</div></td>
+        <td>
+          <span class="${type==='entrata'?'amount-pos':'amount-neg'}">${type==='entrata'?'+':'-'}${fmt(t.amount, cur)}</span>
+          ${cur !== sym() ? `<span style="font-size:0.65rem;color:var(--text3);display:block">${cur}</span>` : ''}
+        </td>
         <td style="white-space:nowrap">
           <button class="icon-btn" onclick="editTx('${t.id}')" title="Modifica">✏️</button>
           <button class="icon-btn" onclick="deleteTx('${t.id}')" title="Elimina">🗑️</button>
@@ -1372,8 +1214,7 @@ function renderTransactions(type) {
     }).join('')}</tbody>
   </table>`;
 
-  // Attach filter listeners (once)
-  [filterMonthEl, filterYearEl].forEach(el => {
+  [fmEl, fyEl].forEach(el => {
     if (el && !el._listenerAttached) {
       el.addEventListener('change', () => renderPage(type === 'entrata' ? 'entrate' : 'uscite'));
       el._listenerAttached = true;
@@ -1381,28 +1222,31 @@ function renderTransactions(type) {
   });
 }
 
-function clearFilter(prefix) {
-  const m = document.getElementById(prefix+'-filter-month');
-  const y = document.getElementById(prefix+'-filter-year');
-  if (m) m.value = '';
-  if (y) y.value = '';
-  renderPage(prefix === 'e' ? 'entrate' : 'uscite');
+function clearFilter(p) {
+  const m = document.getElementById(p+'-filter-month');
+  const y = document.getElementById(p+'-filter-year');
+  if (m) m.value = ''; if (y) y.value = '';
+  renderPage(p === 'e' ? 'entrate' : 'uscite');
 }
 
-function fmtDate(d) {
-  const dt = new Date(d);
-  return dt.toLocaleDateString('it-IT');
-}
+function fmtDate(d) { return new Date(d).toLocaleDateString('it-IT'); }
 
 function editTx(id) {
   const tx = data.transactions.find(t=>t.id===id);
   if (!tx) return;
   document.getElementById('edit-tx-id').value = id;
+  document.getElementById('edit-tx-type').value = tx.type;
   document.getElementById('edit-desc').value = tx.desc;
   document.getElementById('edit-amount').value = tx.amount;
   document.getElementById('edit-date').value = tx.date;
   document.getElementById('edit-note').value = tx.note||'';
+  document.getElementById('edit-currency').value = tx.currency || sym();
   populateCatSelect('edit-cat', tx.type, tx.category);
+  // Populate subcategory after setting category
+  setTimeout(() => {
+    updateSubcatSelect('edit');
+    document.getElementById('edit-subcat').value = tx.subcategory || '';
+  }, 0);
   openModal('modal-tx');
 }
 
@@ -1410,13 +1254,14 @@ function saveEditTx() {
   const id = document.getElementById('edit-tx-id').value;
   const tx = data.transactions.find(t=>t.id===id);
   if (!tx) return;
-  tx.desc = document.getElementById('edit-desc').value;
+  tx.desc = document.getElementById('edit-desc').value.trim();
   tx.amount = parseFloat(document.getElementById('edit-amount').value)||0;
   tx.date = document.getElementById('edit-date').value;
   tx.category = document.getElementById('edit-cat').value;
-  tx.note = document.getElementById('edit-note').value;
-  save();
-  closeModal('modal-tx');
+  tx.subcategory = document.getElementById('edit-subcat').value;
+  tx.note = document.getElementById('edit-note').value.trim();
+  tx.currency = document.getElementById('edit-currency').value;
+  save(); closeModal('modal-tx');
   toast('✅ Transazione aggiornata!', 'success');
   refreshAll();
 }
@@ -1424,9 +1269,7 @@ function saveEditTx() {
 function deleteTx(id) {
   if (!confirm('Eliminare questa transazione?')) return;
   data.transactions = data.transactions.filter(t=>t.id!==id);
-  save();
-  toast('🗑️ Transazione eliminata', 'success');
-  refreshAll();
+  save(); toast('🗑️ Transazione eliminata', 'success'); refreshAll();
 }
 
 // ═══════════════════════════════════════════════
@@ -1437,11 +1280,9 @@ function addCategory() {
   const type = document.getElementById('c-type').value;
   const color = document.getElementById('c-color-inp').value;
   if (!name) { toast('Inserisci un nome', 'error'); return; }
-  data.categories.push({id: uid(), name, type, color});
-  save();
-  document.getElementById('c-name').value = '';
-  toast('✅ Categoria aggiunta!', 'success');
-  renderCategories();
+  data.categories.push({id: uid(), name, type, color, subcategories: [], note: ''});
+  save(); document.getElementById('c-name').value = '';
+  toast('✅ Categoria aggiunta!', 'success'); renderCategories();
 }
 
 function renderCategories() {
@@ -1450,19 +1291,39 @@ function renderCategories() {
     grid.innerHTML = '<div class="empty-state"><div class="emoji">🏷️</div>Nessuna categoria</div>';
     return;
   }
-  const typeLabel = {entrata:'Entrata', uscita:'Uscita', both:'Entrambi'};
-  grid.innerHTML = data.categories.map(cat => `
-    <div class="cat-card" style="background:${cat.color}11">
-      <div class="cat-color" style="background:${cat.color}"></div>
-      <div class="cat-info">
-        <div class="name">${cat.name}</div>
-        <div class="type">${typeLabel[cat.type]}</div>
+  const typeLabel = {entrata:'📈 Entrata', uscita:'📉 Uscita', both:'↕️ Entrambi'};
+  grid.innerHTML = data.categories.map(cat => {
+    const subs = cat.subcategories || [];
+    return `<div class="cat-card" style="background:${cat.color}0d;border-color:${cat.color}33">
+      <div class="cat-card-top">
+        <div class="cat-color" style="background:${cat.color}"></div>
+        <div class="cat-info">
+          <div class="name">${escHtml(cat.name)}</div>
+          <div class="type">${typeLabel[cat.type]}</div>
+          ${cat.note ? `<div style="font-size:0.68rem;color:var(--text3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px" title="${escHtml(cat.note)}">${escHtml(cat.note)}</div>` : ''}
+        </div>
+        <div class="cat-actions">
+          <button class="icon-btn" onclick="editCat('${cat.id}')">✏️</button>
+          <button class="icon-btn" onclick="deleteCat('${cat.id}')">🗑️</button>
+        </div>
       </div>
-      <div class="cat-actions">
-        <button class="icon-btn" onclick="editCat('${cat.id}')">✏️</button>
-        <button class="icon-btn" onclick="deleteCat('${cat.id}')">🗑️</button>
+      <div class="subcats-area">
+        <div class="subcats-label">📂 Sottocategorie (${subs.length})</div>
+        <div class="subcats-list">
+          ${subs.length ? subs.map(s => `
+            <span class="subcat-chip" style="border-color:${cat.color}44;color:${cat.color}">
+              ${escHtml(s.name)}
+              <button class="del-sub" onclick="deleteSubcategory('${cat.id}','${s.id}')" title="Elimina sottocategoria">✕</button>
+            </span>`).join('') : `<span style="font-size:0.7rem;color:var(--text3)">Nessuna sottocategoria</span>`}
+        </div>
+        <div class="subcat-add-row">
+          <input class="subcat-inp" id="subcat-inp-${cat.id}" placeholder="Nuova sottocategoria..."
+            onkeydown="if(event.key==='Enter'){event.preventDefault();addSubcategory('${cat.id}')}">
+          <button class="btn btn-primary btn-sm" onclick="addSubcategory('${cat.id}')">+</button>
+        </div>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 function editCat(id) {
@@ -1473,6 +1334,7 @@ function editCat(id) {
   document.getElementById('edit-cat-type').value = cat.type;
   document.getElementById('edit-color-inp').value = cat.color;
   document.getElementById('edit-color-preview').style.background = cat.color;
+  document.getElementById('edit-cat-note').value = cat.note || '';
   openModal('modal-cat');
 }
 
@@ -1483,44 +1345,33 @@ function saveEditCat() {
   cat.name = document.getElementById('edit-cat-name').value.trim();
   cat.type = document.getElementById('edit-cat-type').value;
   cat.color = document.getElementById('edit-color-inp').value;
-  save();
-  closeModal('modal-cat');
-  toast('✅ Categoria aggiornata!', 'success');
-  renderCategories();
+  cat.note = document.getElementById('edit-cat-note').value.trim();
+  save(); closeModal('modal-cat');
+  toast('✅ Categoria aggiornata!', 'success'); renderCategories();
 }
 
 function deleteCat(id) {
   if (!confirm('Eliminare questa categoria? Le transazioni associate perderanno la categoria.')) return;
   data.categories = data.categories.filter(c=>c.id!==id);
-  data.transactions.forEach(t => { if(t.category===id) t.category = ''; });
-  save();
-  toast('🗑️ Categoria eliminata', 'success');
-  renderCategories();
+  data.transactions.forEach(t => { if(t.category===id) { t.category=''; t.subcategory=''; } });
+  save(); toast('🗑️ Categoria eliminata', 'success'); renderCategories();
 }
 
 // ═══════════════════════════════════════════════
 //  CALENDAR
 // ═══════════════════════════════════════════════
-let calYear = new Date().getFullYear();
-let calMonth = new Date().getMonth();
+let calYear = new Date().getFullYear(), calMonth = new Date().getMonth();
 
 function renderCalendar() {
-  const title = document.getElementById('cal-title');
-  title.textContent = MONTHS[calMonth] + ' ' + calYear;
-
+  document.getElementById('cal-title').textContent = MONTHS[calMonth] + ' ' + calYear;
   const grid = document.getElementById('cal-grid');
   const days = ['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
   let html = days.map(d=>`<div class="cal-day-label">${d}</div>`).join('');
-
   const first = new Date(calYear, calMonth, 1);
-  let startDay = first.getDay() - 1;
-  if (startDay < 0) startDay = 6;
-
+  let startDay = first.getDay() - 1; if (startDay < 0) startDay = 6;
   const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
   const today = new Date();
-
   for (let i=0; i<startDay; i++) html += `<div class="cal-day empty"></div>`;
-
   for (let d=1; d<=daysInMonth; d++) {
     const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const isToday = d===today.getDate()&&calMonth===today.getMonth()&&calYear===today.getFullYear();
@@ -1537,21 +1388,14 @@ function renderCalendar() {
       <div class="day-items">${pills}</div>
     </div>`;
   }
-
   grid.innerHTML = html;
-
-  document.getElementById('cal-prev').onclick = () => {
-    calMonth--; if(calMonth<0){calMonth=11;calYear--;} renderCalendar();
-  };
-  document.getElementById('cal-next').onclick = () => {
-    calMonth++; if(calMonth>11){calMonth=0;calYear++;} renderCalendar();
-  };
+  document.getElementById('cal-prev').onclick = () => { calMonth--; if(calMonth<0){calMonth=11;calYear--;} renderCalendar(); };
+  document.getElementById('cal-next').onclick = () => { calMonth++; if(calMonth>11){calMonth=0;calYear++;} renderCalendar(); };
 }
 
 function calDayClick(dateStr) {
   document.getElementById('task-date').value = dateStr;
-  renderTasks();
-  toast('📅 Data selezionata: ' + fmtDate(dateStr), 'success');
+  renderTasks(); toast('📅 Data: ' + fmtDate(dateStr), 'success');
 }
 
 // ═══════════════════════════════════════════════
@@ -1567,8 +1411,7 @@ function addTask() {
   if (!text) { toast('Scrivi un task', 'error'); return; }
   data.tasks.push({id: uid(), date, text, done: false});
   document.getElementById('task-inp').value = '';
-  save();
-  renderTasks();
+  save(); renderTasks();
 }
 
 function renderTasks() {
@@ -1576,7 +1419,6 @@ function renderTasks() {
   const search = (document.getElementById('task-search-inp')||{value:''}).value.toLowerCase();
   let tasks = data.tasks.filter(t => t.date === date);
   if (search) tasks = tasks.filter(t => t.text.toLowerCase().includes(search));
-
   const list = document.getElementById('task-list');
   if (!tasks.length) {
     list.innerHTML = `<div style="text-align:center;padding:24px;color:var(--text3);font-size:0.8rem">${search?'Nessun risultato':'Nessun task per questa data'}</div>`;
@@ -1588,7 +1430,6 @@ function renderTasks() {
         <button class="task-del" onclick="deleteTask('${t.id}')">✕</button>
       </div>`).join('');
   }
-
   const all = data.tasks.filter(t=>t.date===date);
   const done = all.filter(t=>t.done).length;
   document.getElementById('task-stats').innerHTML = `
@@ -1596,24 +1437,12 @@ function renderTasks() {
       <span>${done}/${all.length} completati</span>
       <span>${all.length?Math.round(done/all.length*100):0}%</span>
     </div>
-    <div class="progress-bar"><div class="progress-fill" style="width:${all.length?Math.round(done/all.length*100):0}%"></div></div>
-  `;
+    <div class="progress-bar"><div class="progress-fill" style="width:${all.length?Math.round(done/all.length*100):0}%"></div></div>`;
 }
 
-function toggleTask(id) {
-  const t = data.tasks.find(t=>t.id===id);
-  if (t) t.done = !t.done;
-  save(); renderTasks();
-}
-
-function deleteTask(id) {
-  data.tasks = data.tasks.filter(t=>t.id!==id);
-  save(); renderTasks();
-}
-
-function escHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+function toggleTask(id) { const t = data.tasks.find(t=>t.id===id); if(t) t.done=!t.done; save(); renderTasks(); }
+function deleteTask(id) { data.tasks = data.tasks.filter(t=>t.id!==id); save(); renderTasks(); }
+function escHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 // ═══════════════════════════════════════════════
 //  RECURRING
@@ -1622,9 +1451,7 @@ let recTab = 'all';
 document.querySelectorAll('[data-rtab]').forEach(tab => {
   tab.addEventListener('click', function(){
     document.querySelectorAll('[data-rtab]').forEach(t=>t.classList.remove('active'));
-    this.classList.add('active');
-    recTab = this.dataset.rtab;
-    renderRecurring();
+    this.classList.add('active'); recTab = this.dataset.rtab; renderRecurring();
   });
 });
 
@@ -1632,45 +1459,39 @@ function renderRecurring() {
   let txs = data.transactions.filter(t => t.recurring);
   if (recTab === 'monthly') txs = txs.filter(t=>t.recurring==='monthly');
   if (recTab === 'annual') txs = txs.filter(t=>t.recurring==='annual');
-
-  // De-duplicate by description+amount+type (show unique)
   const seen = new Set();
   const unique = txs.filter(t => {
     const key = `${t.type}|${t.desc}|${t.amount}|${t.recurring}`;
-    if (seen.has(key)) return false;
-    seen.add(key); return true;
+    if (seen.has(key)) return false; seen.add(key); return true;
   });
-
   const grid = document.getElementById('rec-grid');
   if (!unique.length) {
     grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="emoji">🔄</div>Nessuna spesa ricorrente</div>';
   } else {
     grid.innerHTML = unique.map(t => {
-      const cat = data.categories.find(c=>c.id===t.category)||{name:'—',color:'#666'};
+      const cat = data.categories.find(c=>c.id===t.category)||{name:'—',color:'#666',subcategories:[]};
+      const subcat = cat.subcategories?.find(s=>s.id===t.subcategory);
+      const cur = t.currency || sym();
       return `<div class="rec-card" style="border-left:3px solid ${cat.color}">
         <div class="top">
-          <div class="name">${t.desc}</div>
+          <div class="name">${escHtml(t.desc)}</div>
           <span class="rec-badge ${t.recurring==='monthly'?'rec-monthly':'rec-annual'}">${t.recurring==='monthly'?'Mensile':'Annuale'}</span>
         </div>
-        <div class="amount" style="color:${t.type==='entrata'?'var(--success)':'var(--danger)'}">${t.type==='entrata'?'+':'-'}${fmt(t.amount)}</div>
+        <div class="amount" style="color:${t.type==='entrata'?'var(--success)':'var(--danger)'}">${t.type==='entrata'?'+':'-'}${fmt(t.amount, cur)}</div>
         <div class="meta">
           <span class="tag" style="background:${cat.color}22;color:${cat.color};font-size:0.65rem;padding:2px 7px">${cat.name}</span>
+          ${subcat ? `<span class="subcat-badge">📂 ${escHtml(subcat.name)}</span>` : ''}
+          ${t.note ? `<div style="margin-top:6px;font-size:0.7rem;color:var(--text3)">${escHtml(t.note)}</div>` : ''}
         </div>
       </div>`;
     }).join('');
   }
 
-  const monthlyInc = data.transactions.filter(t=>t.recurring==='monthly'&&t.type==='entrata');
-  const monthlyExp = data.transactions.filter(t=>t.recurring==='monthly'&&t.type==='uscita');
-  const annualExp = data.transactions.filter(t=>t.recurring==='annual'&&t.type==='uscita');
-
-  // Unique sums
-  const seenM = new Set(), seenA = new Set();
+  const seenM = new Set(), seenME = new Set(), seenA = new Set();
   let mInc=0, mExp=0, aExp=0;
-  monthlyInc.forEach(t=>{const k=t.desc+'|'+t.amount;if(!seenM.has(k)){seenM.add(k);mInc+=parseFloat(t.amount);}});
-  const seenME = new Set();
-  monthlyExp.forEach(t=>{const k=t.desc+'|'+t.amount;if(!seenME.has(k)){seenME.add(k);mExp+=parseFloat(t.amount);}});
-  annualExp.forEach(t=>{const k=t.desc+'|'+t.amount;if(!seenA.has(k)){seenA.add(k);aExp+=parseFloat(t.amount);}});
+  data.transactions.filter(t=>t.recurring==='monthly'&&t.type==='entrata').forEach(t=>{const k=t.desc+'|'+t.amount;if(!seenM.has(k)){seenM.add(k);mInc+=parseFloat(t.amount);}});
+  data.transactions.filter(t=>t.recurring==='monthly'&&t.type==='uscita').forEach(t=>{const k=t.desc+'|'+t.amount;if(!seenME.has(k)){seenME.add(k);mExp+=parseFloat(t.amount);}});
+  data.transactions.filter(t=>t.recurring==='annual'&&t.type==='uscita').forEach(t=>{const k=t.desc+'|'+t.amount;if(!seenA.has(k)){seenA.add(k);aExp+=parseFloat(t.amount);}});
 
   document.getElementById('rec-summary').innerHTML = `
     <div class="form-grid">
@@ -1707,7 +1528,6 @@ function doSearch() {
   const cat = document.getElementById('s-cat').value;
   const month = document.getElementById('s-month').value;
   const year = document.getElementById('s-year').value;
-
   let txs = [...data.transactions];
   if (text) txs = txs.filter(t => t.desc.toLowerCase().includes(text) || (t.note||'').toLowerCase().includes(text));
   if (type) txs = txs.filter(t => t.type === type);
@@ -1715,38 +1535,33 @@ function doSearch() {
   if (month !== '') txs = txs.filter(t => new Date(t.date).getMonth() === parseInt(month));
   if (year) txs = txs.filter(t => new Date(t.date).getFullYear() === parseInt(year));
   txs.sort((a,b) => new Date(b.date)-new Date(a.date));
-
   document.getElementById('search-info').textContent = `${txs.length} risultat${txs.length===1?'o':'i'} trovati`;
-
   if (!txs.length) {
-    document.getElementById('search-table').innerHTML = '<div class="empty-state"><div class="emoji">🔍</div>Nessun risultato</div>';
-    return;
+    document.getElementById('search-table').innerHTML = '<div class="empty-state"><div class="emoji">🔍</div>Nessun risultato</div>'; return;
   }
-
   const total = txs.reduce((s,t)=>s+(t.type==='entrata'?1:-1)*parseFloat(t.amount),0);
   document.getElementById('search-table').innerHTML = `
     <div style="margin-bottom:12px;font-size:0.82rem;color:var(--text2)">Saldo filtrato: <b style="color:${total>=0?'var(--success)':'var(--danger)'}">${fmt(Math.abs(total))}</b></div>
     <table>
-    <thead><tr><th>Data</th><th>Tipo</th><th>Descrizione</th><th>Categoria</th><th>Note</th><th>Importo</th></tr></thead>
+    <thead><tr><th>Data</th><th>Tipo</th><th>Descrizione</th><th>Categoria</th><th>Sottocategoria</th><th>Note</th><th>Importo</th></tr></thead>
     <tbody>${txs.map(t => {
-      const cat2 = data.categories.find(c=>c.id===t.category)||{name:'—',color:'#666'};
+      const cat2 = data.categories.find(c=>c.id===t.category)||{name:'—',color:'#666',subcategories:[]};
+      const subcat = cat2.subcategories?.find(s=>s.id===t.subcategory);
+      const cur = t.currency || sym();
       return `<tr>
         <td style="font-family:'Space Mono',monospace;font-size:0.78rem">${fmtDate(t.date)}</td>
         <td><span style="color:${t.type==='entrata'?'var(--success)':'var(--danger)'};font-size:0.75rem;font-weight:600">${t.type==='entrata'?'↑ Entrata':'↓ Uscita'}</span></td>
-        <td>${t.desc}</td>
+        <td>${escHtml(t.desc)}</td>
         <td><span class="tag" style="background:${cat2.color}22;color:${cat2.color}"><span class="tag-dot" style="background:${cat2.color}"></span>${cat2.name}</span></td>
-        <td style="color:var(--text2);font-size:0.78rem">${t.note||'—'}</td>
-        <td class="${t.type==='entrata'?'amount-pos':'amount-neg'}">${t.type==='entrata'?'+':'-'}${fmt(t.amount)}</td>
+        <td>${subcat ? `<span class="subcat-badge">📂 ${escHtml(subcat.name)}</span>` : '<span style="color:var(--text3);font-size:0.75rem">—</span>'}</td>
+        <td><div class="note-cell" title="${escHtml(t.note||'')}">${t.note ? escHtml(t.note) : '<span style="color:var(--text3)">—</span>'}</div></td>
+        <td class="${t.type==='entrata'?'amount-pos':'amount-neg'}">${t.type==='entrata'?'+':'-'}${fmt(t.amount, cur)}</td>
       </tr>`;
-    }).join('')}</tbody>
-  </table>`;
+    }).join('')}</tbody></table>`;
 }
 
 function clearSearch() {
-  ['s-text','s-type','s-cat','s-month','s-year'].forEach(id => {
-    const el = document.getElementById(id);
-    if(el) el.value='';
-  });
+  ['s-text','s-type','s-cat','s-month','s-year'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
   document.getElementById('search-info').textContent = '';
   document.getElementById('search-table').innerHTML = '<div class="empty-state"><div class="emoji">🔍</div>Usa i filtri per cercare</div>';
 }
@@ -1772,21 +1587,15 @@ function generatePrint() {
   const type = document.getElementById('print-type').value;
   const month = parseInt(document.getElementById('print-month').value);
   const year = parseInt(document.getElementById('print-year').value);
-
   let txs = [...data.transactions];
   let title = '';
-
   if (type === 'monthly') {
-    txs = txs.filter(t => {
-      const d = new Date(t.date);
-      return d.getMonth()===month && d.getFullYear()===year;
-    });
+    txs = txs.filter(t => { const d=new Date(t.date); return d.getMonth()===month && d.getFullYear()===year; });
     title = `Report Mensile — ${MONTHS[month]} ${year}`;
   } else {
     txs = txs.filter(t => new Date(t.date).getFullYear()===year);
     title = `Report Annuale — ${year}`;
   }
-
   txs.sort((a,b)=>new Date(a.date)-new Date(b.date));
   const income = txs.filter(t=>t.type==='entrata');
   const expenses = txs.filter(t=>t.type==='uscita');
@@ -1794,13 +1603,15 @@ function generatePrint() {
   const totalOut = expenses.reduce((s,t)=>s+parseFloat(t.amount),0);
 
   const tableRows = (rows, type2) => rows.map(t => {
-    const cat = data.categories.find(c=>c.id===t.category)||{name:'—',color:'#666'};
+    const cat = data.categories.find(c=>c.id===t.category)||{name:'—',color:'#666',subcategories:[]};
+    const subcat = cat.subcategories?.find(s=>s.id===t.subcategory);
+    const cur = t.currency || sym();
     return `<tr>
       <td style="font-family:'Space Mono',monospace;font-size:0.78rem">${fmtDate(t.date)}</td>
-      <td>${t.desc}</td>
-      <td><span class="tag" style="background:${cat.color}22;color:${cat.color}"><span class="tag-dot" style="background:${cat.color}"></span>${cat.name}</span></td>
-      <td>${t.note||'—'}</td>
-      <td class="${type2==='entrata'?'amount-pos':'amount-neg'}" style="text-align:right">${type2==='entrata'?'+':'-'}${fmt(t.amount)}</td>
+      <td>${escHtml(t.desc)}</td>
+      <td><span class="tag" style="background:${cat.color}22;color:${cat.color}"><span class="tag-dot" style="background:${cat.color}"></span>${cat.name}</span>${subcat?`<span class="subcat-badge">📂 ${escHtml(subcat.name)}</span>`:''}</td>
+      <td style="font-size:0.75rem;color:var(--text2);max-width:150px">${t.note ? escHtml(t.note) : '—'}</td>
+      <td class="${type2==='entrata'?'amount-pos':'amount-neg'}" style="text-align:right">${type2==='entrata'?'+':'-'}${fmt(t.amount, cur)}</td>
     </tr>`;
   }).join('');
 
@@ -1820,19 +1631,18 @@ function generatePrint() {
       </div>
       ${income.length ? `<h3 style="color:var(--success);margin-bottom:12px">📈 Entrate (${income.length})</h3>
       <div class="table-wrap" style="margin-bottom:24px">
-        <table><thead><tr><th>Data</th><th>Descrizione</th><th>Categoria</th><th>Note</th><th style="text-align:right">Importo</th></tr></thead>
+        <table><thead><tr><th>Data</th><th>Descrizione</th><th>Categoria / Sottocategoria</th><th>Note</th><th style="text-align:right">Importo</th></tr></thead>
         <tbody>${tableRows(income,'entrata')}</tbody>
         <tfoot><tr><td colspan="4" style="text-align:right;font-weight:600;padding:10px 12px;border-top:2px solid var(--border)">Totale</td><td class="amount-pos" style="text-align:right;padding:10px 12px;border-top:2px solid var(--border)">${fmt(totalIn)}</td></tr></tfoot>
         </table></div>` : ''}
       ${expenses.length ? `<h3 style="color:var(--danger);margin-bottom:12px">📉 Uscite (${expenses.length})</h3>
       <div class="table-wrap">
-        <table><thead><tr><th>Data</th><th>Descrizione</th><th>Categoria</th><th>Note</th><th style="text-align:right">Importo</th></tr></thead>
+        <table><thead><tr><th>Data</th><th>Descrizione</th><th>Categoria / Sottocategoria</th><th>Note</th><th style="text-align:right">Importo</th></tr></thead>
         <tbody>${tableRows(expenses,'uscita')}</tbody>
         <tfoot><tr><td colspan="4" style="text-align:right;font-weight:600;padding:10px 12px;border-top:2px solid var(--border)">Totale</td><td class="amount-neg" style="text-align:right;padding:10px 12px;border-top:2px solid var(--border)">${fmt(totalOut)}</td></tr></tfoot>
         </table></div>` : ''}
       ${!txs.length ? '<div class="empty-state"><div class="emoji">📭</div>Nessuna transazione nel periodo selezionato</div>' : ''}
     </div>`;
-
   toast('✅ Report generato!', 'success');
 }
 
@@ -1847,14 +1657,12 @@ function doBackup() {
   const d = new Date();
   a.href = url;
   a.download = `financetracker_backup_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}.json`;
-  a.click();
-  URL.revokeObjectURL(url);
+  a.click(); URL.revokeObjectURL(url);
   toast('💾 Backup scaricato!', 'success');
 }
 
 function doRestore(event) {
-  const file = event.target.files[0];
-  if (!file) return;
+  const file = event.target.files[0]; if (!file) return;
   const reader = new FileReader();
   reader.onload = e => {
     try {
@@ -1862,22 +1670,19 @@ function doRestore(event) {
       if (!restored.transactions || !restored.categories) throw new Error('Formato non valido');
       if (!confirm('Sovrascrivere tutti i dati attuali con il backup?')) return;
       data = restored;
-      save();
-      toast('✅ Backup ripristinato!', 'success');
-      refreshAll();
-    } catch(err) {
-      toast('❌ File non valido: ' + err.message, 'error');
-    }
+      // Migrate
+      data.categories = data.categories.map(c => ({subcategories:[], note:'', ...c}));
+      data.transactions = data.transactions.map(t => ({currency: data.settings?.currency||'€', subcategory:'', ...t}));
+      save(); toast('✅ Backup ripristinato!', 'success'); refreshAll();
+    } catch(err) { toast('❌ File non valido: ' + err.message, 'error'); }
   };
-  reader.readAsText(file);
-  event.target.value = '';
+  reader.readAsText(file); event.target.value = '';
 }
 
 function resetAll() {
   if (!confirm('⚠️ Sei sicuro? Tutti i dati verranno eliminati!')) return;
   if (!confirm('Conferma: eliminare TUTTI i dati?')) return;
-  localStorage.removeItem('fintrack_data');
-  location.reload();
+  localStorage.removeItem('fintrack_data'); location.reload();
 }
 
 // ═══════════════════════════════════════════════
@@ -1895,8 +1700,7 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
 let toastTimer;
 function toast(msg, type='') {
   const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.className = 'show ' + type;
+  el.textContent = msg; el.className = 'show ' + type;
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.className = '', 3000);
 }
@@ -1906,30 +1710,19 @@ function toast(msg, type='') {
 // ═══════════════════════════════════════════════
 function init() {
   load();
-
-  // Apply saved settings
-  if (data.settings.zoom) { zoom = data.settings.zoom; }
-  else { zoom = 110; }
-  applyZoom();
-
+  zoom = data.settings.zoom || 110; applyZoom();
   if (data.settings.theme === 'light') {
-    isDark = false;
-    document.body.classList.add('theme-light');
+    isDark = false; document.body.classList.add('theme-light');
     document.getElementById('theme-icon').textContent = '🌙';
     document.getElementById('theme-label').textContent = 'Tema Scuro';
   }
-
   if (data.settings.currency) {
     document.getElementById('currency-sel').value = data.settings.currency;
     document.getElementById('currency-sel-top').value = data.settings.currency;
   }
-
-  updateBadges();
-  renderDashboard();
-  renderTasks();
-  setupTopbar('dashboard');
+  updateCurSymbols();
+  updateBadges(); renderDashboard(); renderTasks(); setupTopbar('dashboard');
 }
-
 init();
 </script>
 </body>
